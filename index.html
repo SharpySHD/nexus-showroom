@@ -27,7 +27,7 @@
             width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative;
         }
 
-        /* PHASE 1: RETRO TYPEWRITER SWITCHBOARD (0.0s - 3.0s) */
+        /* PHASE 1: RETRO SWITCHBOARD KEYBOARD CLACKS (0.0s - 3.0s) */
         .continental-switchboard-frame {
             position: absolute; width: 90%; max-width: 650px; text-align: left;
             background: #000; border: 1px solid var(--border-color); border-radius: 4px;
@@ -54,12 +54,11 @@
         @keyframes strikeKey { to { opacity: 1; width: 100%; } }
         @keyframes fadeOutSwitchboard { to { opacity: 0; transform: scale(0.96); visibility: hidden; } }
 
-        /* PHASE 2: PNEUMATIC CAPSULE & GALVANIZED MATRIX (3.0s - 6.0s) */
+        /* PHASE 2: PNEUMATIC PIPELINES & GALVANIZED NETWORK (3.0s - 6.0s) */
         .pneumatic-pipe-network {
             position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
             opacity: 0; visibility: hidden;
-            animation: pipePhaseInit 3.0s linear forwards 3.0s;
-            perspective: 800px;
+            animation: pipePhaseInit 3.0s ease-out forwards 3.0s;
             z-index: 5;
         }
         .main-pipe-line {
@@ -70,29 +69,29 @@
             position: absolute; top: -10%; width: 14px; height: 40px;
             background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-blue));
             border-radius: 6px; box-shadow: 0 0 20px var(--neon-cyan);
-            animation: capsuleShoot 1.2s cubic-bezier(0.7, 0, 0.84, 0) forwards 0.1s;
+            animation: capsuleShoot 1.0s cubic-bezier(0.7, 0, 0.84, 0) forwards 0.1s;
         }
         .galvanized-grid-overlay {
             position: absolute; inset: 0;
             background-image: linear-gradient(rgba(6, 182, 212, 0.08) 2px, transparent 2px), linear-gradient(90deg, rgba(6, 182, 212, 0.08) 2px, transparent 2px);
             background-size: 50px 50px; opacity: 0;
-            animation: galvanizeGrid 0.8s ease forwards 0.9s;
+            animation: galvanizeGrid 0.6s ease forwards 0.8s;
         }
         @keyframes pipePhaseInit {
-            0% { opacity: 1; visibility: visible; }
-            80% { opacity: 1; transform: scale(1) translateZ(0); }
-            100% { opacity: 1; visibility: visible; transform: scale(3.5) translateZ(500px); }
+            0% { opacity: 1; visibility: visible; transform: scale(1); }
+            70% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; visibility: hidden; transform: scale(1.4); filter: brightness(2); }
         }
         @keyframes capsuleShoot { 0% { top: -10%; } 100% { top: 110%; } }
         @keyframes galvanizeGrid {
-            0% { opacity: 0; background-size: 80px 80px; }
+            0% { opacity: 0; background-size: 60px 60px; }
             100% { opacity: 1; background-size: 30px 30px; border: 1px solid rgba(6, 182, 212, 0.2); }
         }
 
-        /* PHASE 3: SPEED HYPER-DRIVE BLINDING WHITEOUT (6.0s - 7.2s) */
+        /* PHASE 3: SPEED HYPER-DRIVE BLINDING WHITEOUT (5.8s - 7.0s) */
         .blinding-whiteout-shield {
             position: absolute; inset: 0; background: #ffffff; opacity: 0; pointer-events: none; z-index: 99;
-            animation: whiteoutStrike 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 5.8s;
+            animation: whiteoutStrike 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 5.6s;
         }
         @keyframes whiteoutStrike {
             0% { opacity: 0; }
@@ -100,11 +99,11 @@
             100% { opacity: 0; }
         }
 
-        /* PHASE 4: TERMINATOR 1 CHROMIUM METALLURGY FORGING (6.5s - 10.5s) */
+        /* PHASE 4: TERMINATOR 1 CHROMIUM METAL LOGO FORGING (6.2s - 10.5s) */
         .terminator-identity-reveal {
             position: absolute; text-align: center; width: 90%; max-width: 750px;
             opacity: 0; visibility: hidden;
-            animation: terminatorSequence 4.5s ease-out forwards 6.3s;
+            animation: terminatorSequence 4.3s ease-out forwards 6.2s;
             z-index: 20;
         }
         .metallic-chrome-text {
@@ -127,16 +126,16 @@
         .logo-laser-sweep {
             position: absolute; top: 52%; left: -10%; width: 120%; height: 2px;
             background: #ef4444; box-shadow: 0 0 14px #ef4444, 0 0 4px #ffffff;
-            opacity: 0; animation: laserGlow 1.0s ease-in-out infinite alternate 0.5s;
+            opacity: 0; animation: laserGlow 1.0s ease-in-out infinite alternate 0.4s;
         }
         
-        /* Absolute Chronological Animation Timeline */
+        /* Firefox Fixed: Standard keyframes syntax handles the transition timeline flawlessly */
         @keyframes terminatorSequence {
-            0% { opacity: 0; visibility: visible; transform: scale(0.95); filter: brightness(1.6); }
+            0% { opacity: 0; visibility: visible; transform: scale(0.96); filter: brightness(1.5); }
             15% { opacity: 1; transform: scale(1); filter: brightness(1); }
             75% { opacity: 1; transform: scale(1); filter: blur(0); }
             /* PHASE 5: THE SEAMLESS FADE TO ABSOLUTE BLACK DISSOLVE */
-            100% { opacity: 0; visibility: hidden; transform: scale(1.03); filter: blur(6px); }
+            100% { opacity: 0; visibility: hidden; transform: scale(1.02); filter: blur(6px); }
         }
         @keyframes laserGlow { 0% { opacity: 0; } 100% { opacity: 1; } }
 
@@ -163,7 +162,7 @@
         </div>
     </div>
 
-    <!-- PHASE 2: PNEUMATIC NETWORK ENTRANCE EFFECT -->
+    <!-- PHASE 2: PNEUMATIC PIPELINES & GALVANIZED NETWORK -->
     <div class="pneumatic-pipe-network">
         <div class="main-pipe-line">
             <div class="telegram-capsule"></div>
@@ -174,7 +173,7 @@
     <!-- PHASE 3: SPEED OVERDRIVE FLASH OVERLAY -->
     <div class="blinding-whiteout-shield"></div>
 
-    <!-- PHASE 4 & 5: CHROMIUM METALLURGY FORGE + FADE TO ABSOLUTE BLACK -->
+    <!-- PHASE 4 & 5: CHROMIUM METALLURGY LOGO FORGE + FADE TO ABSOLUTE BLACK -->
     
         <h1 class="metallic-chrome-text">THE EXTRACTOR NEXUS<div class="logo-laser-sweep"></div></h1>
         <h2 class="metallic-chrome-sub">A SHARPHUB DYNAMICS PRODUCTION</h2>
@@ -189,8 +188,7 @@
         window.location.href = "showroom-matrix.html";
     }
 
-    // Extended 11-second master clock gives the animation full room to play, fade to black completely, then jump layers
-    setTimeout(executeSystemHandshake, 11000);
+    // Fixed Master Clock: Safely handles the chronological redirect after exactly 10.5 seconds
+    setTimeout(executeSystemHandshake, 10500);
 
-    // Desktop/Mobile physical bypass triggers to avoid device caching locks
-    document.body.addEventListener('touchstart', executeSystemHandshake);
+    // iPad Tap Interaction Safeguard: Instantly triggers the handshake to bypass device caching locks
