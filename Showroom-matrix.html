@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE EXTRACTOR NEXUS • UNIFIED SHOWROOM MATRIX</title>
+    <style>
+        :root {
+            --bg-color: #050811;
+            --card-bg: #0b1120;
+            --inner-bg: #070b14;
+            --grid-line: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --neon-cyan: #06b6d4;
+            --neon-blue: #3b82f6;
+            --neon-amber: #f59e0b;
+            --border-color: #1e293b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 2rem 1rem;
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .container { max-width: 1050px; margin: 0 auto; }
+        
+        header {
+            background: rgba(11, 17, 32, 0.85);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(6px);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .hub-badge {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 0.3rem 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .title { font-size: 2.2rem; font-weight: 900; letter-spacing: 0.05em; color: #ffffff; }
+        .subtitle { font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .subtitle strong { color: var(--neon-amber); }
+
+        /* The Core Aggregate Gallery Layout Grid */
+        .hub-interface-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+        .hub-interface-title::before {
+            content: '⚡'; margin-right: 0.6rem; color: var(--neon-cyan);
+        }
+        
+        .showroom-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .syndicate-node {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.75rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Master Tier Accent Lines */
+        .syndicate-node::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: 10px 10px 0 0;
+        }
+        .node-prestige::before { background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue)); }
+        .node-ipay::before { background: linear-gradient(90deg, var(--neon-blue), purple); }
+        .node-tab::before { background: linear-gradient(90deg, var(--neon-amber), red); }
+        
+        .node-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+        .node-name { font-size: 1.3rem; font-weight: 800; color: #ffffff; letter-spacing: 0.02em; }
+        .node-count { font-family: monospace; font-size: 0.8rem; color: var(--neon-cyan); background: rgba(6, 182, 212, 0.1); padding: 0.25rem 0.5rem; border-radius: 4px; border: 1px solid rgba(6, 182, 212, 0.2); }
+        
+        .node-pitch { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5; }
+        
+        /* Interactive Network Arms / Sub-Brand Slots */
+        .network-arms-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .arm-button {
+            background-color: var(--inner-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .arm-button:hover {
+            border-color: var(--neon-cyan);
+            background-color: rgba(6, 182, 212, 0.05);
+        }
+        .arm-name { font-size: 0.85rem; font-weight: 700; color: #ffffff; letter-spacing: 0.03em; }
+        .arm-status { font-family: monospace; font-size: 0.65rem; color: var(--text-muted); margin-top: 0.15rem; text-transform: uppercase; }
+        .arm-button:hover .arm-status { color: var(--neon-cyan); }
+        
+        /* Direct Showroom Actions */
+        .launch-btn {
+            background: #111e36;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 0.85rem;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .launch-btn:hover {
+            background: var(--neon-blue);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Vault Security Gateway Footer */
+        .security-lockout {
+            background: rgba(11, 17, 32, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--neon-amber);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="hub-badge">Core Interface Simulator • Global Pipeline Blueprint</div>
+        <div class="title">THE EXTRACTOR NEXUS TRANSIT HUB</div>
+        <div class="subtitle">Consolidating <strong>38 Active Sibling Domains</strong> Into a Single Galvanised Umbrella Node</div>
+    </header>
+
+    <div class="hub-interface-title">Live Superhub Simulation Interface Layout</div>
+    <div class="showroom-matrix">
+        
+        <!-- NODE 1: PRESTIGE ALLIANCE MATRIX ARMS -->
+        <div class="syndicate-node node-prestige">
+            <div class="node-header">
+                <div class="node-name">PRESTIGE / GD007</div>
+                <div class="node-count">6 ARMS CONNECTED</div>
+            </div>
+            <div class="node-pitch">All sub-brands, payout scripts, and user balances are natively accessible from this quadrant. Zero banner clutters.</div>
+            <div class="network-arms-container">
+                <div class="arm-button"><div class="arm-name">MRBET96</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">CROWN20</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">PLAY99</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">MRWIN77</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">VIP15</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">SPEED8</div><div class="arm-status">Pipeline Active</div></div>
+            </div>
+            <div class="launch-btn">Initialize Prestige Overlays</div>
+        </div>
+
+        <!-- NODE 2: IPAY9 / 99PARTNERS MATRIX ARMS -->
+        <div class="syndicate-node node-ipay">
+            <div class="node-header">
+                <div class="node-name">IPAY9 ARRAYS</div>
+                <div class="node-count">6 ARMS CONNECTED</div>
+            </div>
+            <div class="node-pitch">Consolidating loose white-label tracking codes. The player launches any node under an unblockable domain proxy shield.</div>
+            <div class="network-arms-container">
+                <div class="arm-button"><div class="arm-name">IPAY9 CORE</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">BIGPAY77</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">ROLEX9</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">ME99 ENTITY</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">KINGBET9</div><div class="arm-status">Pipeline Active</div></div>
+                <div class="arm-button"><div class="arm-name">99PARTNERS</div><div class="arm-status">Pipeline Active</div></div>
+            </div>
+            <div class="launch-btn">Initialize iPay9 Overlays</div>
+        </div>
+
+        <!-- NODE 3: TAB PARTNERSHIP MATRIX ARMS -->
+        <div class="syndicate-node node-tab">
+            <div class="node-header">
+                <div class="node-name">TAB PARTNERSHIPS</div>
+                <div class="node-count">4 ARMS CONNECTED</div>
+            </div>
