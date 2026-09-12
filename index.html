@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE EXTRACTOR NEXUS • SYSTEM INITIATION</title>
+    <title>THE EXTRACTOR NEXUS • INITIALIZATION</title>
     <style>
         :root {
             --bg-color: #04060b;
@@ -27,9 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* ========================================================
-           STAGE 1: THE MARVEL / JOHN WICK TYPEWRITER CUTS VIEWPORT 
-           ======================================================== */
+        /* --- STAGE 1: THE TACTICAL MARVEL / JOHN WICK CINEMATIC STAGE --- */
         #cinematic-viewport {
             position: fixed;
             top: 0;
@@ -43,12 +41,9 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            transition: all 0.5s ease-in-out;
         }
 
-        /* Phrenetic Hands/Keyboard Cut Boxes */
         .typing-montage-frame {
-            position: relative;
             width: 100%;
             max-width: 650px;
             height: 140px;
@@ -59,11 +54,12 @@
             justify-content: center;
             background: #020306;
             overflow: hidden;
+            position: relative;
         }
-        .montage-clip-text {
+        .montage-clip-bg {
             font-size: 2.2rem;
             font-weight: 900;
-            color: rgba(255,255,255,0.03);
+            color: rgba(255,255,255,0.02);
             letter-spacing: -2px;
             position: absolute;
             width: 150%;
@@ -77,11 +73,10 @@
             width: 90%;
             text-align: left;
             border-right: 2px solid #00ffcc;
-            white-space: pre;
+            white-space: pre-wrap;
             overflow: hidden;
         }
 
-        /* Pneumatic Glass Transmission Cylinder */
         .pneumatic-container {
             width: 100%;
             max-width: 500px;
@@ -89,15 +84,12 @@
             border: 2px solid var(--border-color);
             background: linear-gradient(180deg, rgba(26,35,54,0.2) 0%, rgba(5,8,15,0.4) 100%);
             border-radius: 30px;
-            display: flex;
+            display: none;
             align-items: center;
             padding: 0 10px;
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
         .capsule-cartridge {
-            width: 120px;
+            width: 140px;
             height: 40px;
             background: rgba(6, 182, 212, 0.2);
             border: 1px solid var(--neon-cyan);
@@ -108,11 +100,10 @@
             font-size: 0.75rem;
             color: var(--neon-cyan);
             font-weight: bold;
-            position: relative;
+            font-family: monospace;
         }
 
-        /* Hyperspace Pipe Transition Overlays */
-        .hyperspace-pipe-tunnel {
+        .hyperspace-tunnel {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -130,7 +121,6 @@
             opacity: 0;
         }
 
-        /* Terminator Striking Credit Overlays */
         .terminator-flash-screen {
             position: absolute;
             width: 100%;
@@ -155,18 +145,16 @@
             justify-content: center;
             z-index: 10001;
         }
-        .t-logo {
-            max-width: 480px;
-            width: 85%;
+        .vector-logo-wrap {
+            width: 100%;
+            max-width: 550px;
+            display: none;
             opacity: 0;
             transform: scale(1.15);
-            transition: all 1.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-            filter: drop-shadow(0 0 20px rgba(59,130,246,0.3));
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
 
-        /* ========================================================
-           STAGE 2: MONOSPACE TACTICAL OPERATIONAL CORE 
-           ======================================================== */
+        /* --- STAGE 2: MONOSPACE TACTICAL OPERATIONAL CORE --- */
         .master-terminal-wrapper {
             opacity: 0;
             display: none;
@@ -209,20 +197,33 @@
         button.submit-btn { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 1.1rem; font-family: monospace; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; }
         button.submit-btn:hover { background: var(--neon-blue); color: #ffffff; }
         
-        .skip-intro-btn { position: absolute; bottom: 2rem; right: 2rem; background: transparent; border: 1px solid #222; color: #444; padding: 0.5rem 1rem; font-size: 0.75rem; cursor: pointer; }
+        .skip-intro-btn { position: absolute; bottom: 2rem; right: 2rem; background: transparent; border: 1px solid #222; color: #444; padding: 0.5rem 1rem; font-size: 0.75rem; cursor: pointer; z-index: 11000; }
     </style>
 </head>
 <body>
 
-    <!-- ========================================================
-       STAGE 1: HARDWARE LAYER (THE CINEMATIC SEQUENCE CLOSURES)
-       ======================================================== -->
+    <!-- STAGE 1: INTERACTIVE EMBEDDED MEDIA SLIDES -->
     <div id="cinematic-viewport">
-        <!-- Mechanical Keyboard / Hands Section -->
         <div id="montage-box" class="typing-montage-frame">
-            <div class="montage-clip-text">ASDFGHJKL QWERTYUIOP ZXCVBNM</div>
+            <div class="montage-clip-bg">QWERTYUIOP ASDFGHJKL ZXCVBNM</div>
             <div id="carriage-line" class="live-carriage-line"></div>
         </div>
 
-        <!-- Pneumatic Pipe Matrix -->
         <div id="tube-conduit" class="pneumatic-container">
+            <div id="capsule-node" class="capsule-cartridge">TELEGRAM_PIPE_INJECT</div>
+        </div>
+
+        <div id="warp-tunnel" class="hyperspace-tunnel"></div>
+        <div id="whiteout" class="terminator-flash-screen"></div>
+
+        <div id="terminator-box" class="terminator-logo-container">
+            <!-- LOGO 1: SHARPHUB DYNAMICS VECTOR BASE -->
+            <div id="vector-logo-1" class="vector-logo-wrap">
+                <svg viewBox="0 0 800 200" width="100%">
+                    <defs>
+                        <linearGradient id="steel" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#94a3b8"/>
+                            <stop offset="50%" stop-color="#cbd5e1"/>
+                            <stop offset="100%" stop-color="#475569"/>
+                        </linearGradient>
+                    </defs>
