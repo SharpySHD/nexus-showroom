@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE EXTRACTOR NEXUS • PREMIER AGGREGATE CORE</title>
+    <style>
+        :root {
+            --bg-color: #060913;
+            --card-bg: #0d1527;
+            --grid-line: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --neon-cyan: #06b6d4;
+            --neon-blue: #3b82f6;
+            --neon-amber: #f59e0b;
+            --neon-red: #ef4444;
+            --border-color: #1f2937;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 2rem 1rem;
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 2rem 1.5rem;
+            background: rgba(13, 21, 39, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+        .brand-title { font-size: 2.2rem; font-weight: 900; letter-spacing: 0.05em; color: #ffffff; }
+        .brand-subtitle { font-size: 1rem; color: var(--neon-cyan); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; margin-top: 0.25rem; }
+        .meta-tag { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; font-family: monospace; }
+        
+        .banner-frame { width: 100%; height: 240px; background: #000; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 2.5rem; overflow: hidden; }
+        .banner-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.3rem; margin-bottom: 1rem; text-transform: uppercase; color: #ffffff; letter-spacing: 0.05em; display: flex; align-items: center; }
+        h2::before { content: '⚡'; margin-right: 0.5rem; color: var(--neon-cyan); }
+        p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.6; }
+        
+        /* Interactive Showcase Grid */
+        .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+        .showcase-card { background: rgba(6, 9, 19, 0.6); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.25rem; position: relative; }
+        .showcase-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--neon-blue); border-radius: 6px 0 0 6px; }
+        .showcase-card.featured::before { background: var(--neon-cyan); }
+        .showcase-card.strategic::before { background: var(--neon-amber); }
+        
+        .card-label { font-size: 0.75rem; text-transform: uppercase; font-family: monospace; color: var(--neon-cyan); font-weight: 700; }
+        .card-title { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin: 0.25rem 0 0.75rem 0; }
+        .sub-brand-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+        .sub-brand-tag { font-family: monospace; font-size: 0.75rem; background: #1e293b; padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-main); }
+        
+        .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        @media (max-width: 600px) { .metrics-grid { grid-template-columns: 1fr; } }
+        .metric-card { background: rgba(6, 9, 19, 0.5); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 6px; }
+        .metric-value { font-size: 1.5rem; font-weight: 700; color: var(--neon-cyan); font-family: monospace; }
+        .metric-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+        
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+        input, textarea { background: #060913; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.75rem; color: #ffffff; font-size: 0.95rem; }
+        input:focus, textarea:focus { outline: none; border-color: var(--neon-cyan); }
+        
+        button { width: 100%; background: linear-gradient(to right, var(--neon-blue), var(--neon-cyan)); color: white; border: none; padding: 1.1rem; border-radius: 4px; font-size: 1rem; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem; }
+        button:hover { opacity: 0.9; }
+        footer { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 4rem; font-family: monospace; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="brand-title">THE EXTRACTOR NEXUS</div>
+        <div class="brand-subtitle">SHARPHUB DYNAMICS • PREMIER AGGREGATE CORE</div>
+        <div class="meta-tag">Phase 1 Perimeter Integration • Adelaide Core Nodes • Manila Server Branch</div>
+    </header>
+    
+    <div class="banner-frame">
+        <img src="IMG_0554.jpeg" alt="Tech1 Superhighway Matrix Grid">
+    </div>
+    
+    <section>
+        <h2>The Architecture Shield</h2>
+        <p>Traditional multi-brand networks divide their footprints across fragile mirror domains, triggering silent 20% player traffic leaks to the void when regulatory hurdles drop active entrypoints. Simultaneously, scaling remains bottlenecked by operators employing manual data queues to crawl social paths and file live-chat log screenshots.</p>
+        <p>The Extractor Nexus eliminates user friction entirely by embedding your complex matrix side-by-side inside a 24/7 galvanized interface. Fractured communication lines are instantly straightened into a high-speed cyberspace anycast pipeline, delivering active users directly to your core platform.</p>
+    </section>
+
+    <section>
+        <h2>Turnkey Showcase Concept Map</h2>
+        <p>Our unified gallery interface consolidates premier multi-tenant infrastructure formats under zero-friction viewports, increasing session longevity by completely vaporizing invasive pop-up cross-promotion banners:</p>
+        
+        <div class="showcase-grid">
+            <!-- iPay9 Grid Tier Alignment -->
+            <div class="showcase-card featured">
+                <div class="card-label">Tier 1 • Visibility Frame</div>
+                <div class="card-title">iPay9 Network Cluster</div>
+                <div class="sub-brand-list">
+                    <span class="sub-brand-tag">IPAY9</span>
+                    <span class="sub-brand-tag">BIGPAY77</span>
+                    <span class="sub-brand-tag">ROLEX9</span>
+                    <span class="sub-brand-tag">ME99</span>
+                    <span class="sub-brand-tag">KINGBET9</span>
+                    <span class="sub-brand-tag">99PARTNERS</span>
+                </div>
+                <p style="font-size: 0.85rem; margin: 0;">Consolidating loose network domains into an unblockable single-point showroom gateway.</p>
+            </div>
+
+            <!-- Prestige Alliance (GDay007 Standard) Alignment -->
+            <div class="showcase-card">
+                <div class="card-label">Tier 2 • Interface Grid</div>
+                <div class="card-title">Prestige Alliance Array</div>
+                <div class="sub-brand-list">
+                    <span class="sub-brand-tag">MRBET96</span>
+                    <span class="sub-brand-tag">CROWN20</span>
+                    <span class="sub-brand-tag">PLAY99</span>
+                    <span class="sub-brand-tag">MRWIN77</span>
+                    <span class="sub-brand-tag">VIP15</span>
+                    <span class="sub-brand-tag">SPEED8</span>
+                </div>
+                <p style="font-size: 0.85rem; margin: 0;">Automating traffic load balancing to insulate active user session lifetimes.</p>
+            </div>
+
+            <!-- TAB Partnership Realignment -->
+            <div class="showcase-card strategic">
+                <div class="card-label">Tier 3 • Corridor Loop</div>
+                <div class="card-title">TAB Partnership Node</div>
+                <div class="sub-brand-list">
+                    <span class="sub-brand-tag">CROWN9</span>
+                    <span class="sub-brand-tag">KANGAROO88</span>
+                    <span class="sub-brand-tag">NOVABET13</span>
+                    <span class="sub-brand-tag">XPAY33</span>
+                </div>
+                <p style="font-size: 0.85rem; margin: 0;">Isolating high-value regional traffic flows under verified anycast routing subroutines.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Commercial Performance Metrics</h2>
+        <p>Our background infrastructure handles path mapping, view translation, and structural resolution on autopilot, ensuring absolute platform tracking continuity:</p>
+        <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-value">99.998%</div><div class="metric-label">Continuous Live Uptime Guarantee</div></div>
+            <div class="metric-card"><div class="metric-value">16.4 ms</div><div class="metric-label">Edge Route Latency Ceiling</div></div>
 
