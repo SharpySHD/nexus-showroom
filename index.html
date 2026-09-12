@@ -3,154 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE EXTRACTOR NEXUS • PREMIER AGGREGATE CORE</title>
+    <title>THE EXTRACTOR NEXUS • RUNTIME SYSTEM INITIALIZATION</title>
     <style>
         :root {
-            --bg-color: #060913;
-            --card-bg: #0d1527;
-            --grid-line: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #64748b;
+            --bg-color: #03050c;
             --neon-cyan: #06b6d4;
             --neon-blue: #3b82f6;
-            --neon-amber: #f59e0b;
-            --neon-red: #ef4444;
-            --border-color: #1f2937;
+            --continental-gold: #d4af37;
+            --alert-red: #ef4444;
+            --border-color: #111827;
+            --text-muted: #374151;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
+        body, html {
             background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: system-ui, -apple-system, sans-serif;
-            padding: 2rem 1rem;
-            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 40px 40px;
+            color: #ffffff;
+            font-family: Garamond, Georgia, serif;
+            height: 100vh; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
         }
-        .container { max-width: 900px; margin: 0 auto; }
-        
-        header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            padding: 2rem 1.5rem;
-            background: rgba(13, 21, 39, 0.8);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            backdrop-filter: blur(4px);
-        }
-        .brand-title { font-size: 2.2rem; font-weight: 900; letter-spacing: 0.05em; color: #ffffff; }
-        .brand-subtitle { font-size: 1rem; color: var(--neon-cyan); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; margin-top: 0.25rem; }
-        .meta-tag { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; font-family: monospace; }
-        
-        .banner-frame { width: 100%; height: 240px; background: #000; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 2.5rem; overflow: hidden; }
-        .banner-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; margin-bottom: 2rem; }
-        h2 { font-size: 1.3rem; margin-bottom: 1rem; text-transform: uppercase; color: #ffffff; letter-spacing: 0.05em; display: flex; align-items: center; }
-        h2::before { content: '⚡'; margin-right: 0.5rem; color: var(--neon-cyan); }
-        p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.6; }
+        .cinematic-stage {
+            width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative;
+        }
+
+        /* PHASE 1: JOHN WICK EXCOMMUNICADO RETRO SWITCHBOARD LAYOUT */
+        .continental-switchboard-frame {
+            position: absolute; width: 90%; max-width: 650px; text-align: left;
+            background: #000; border: 1px solid var(--border-color); border-radius: 4px;
+            padding: 2.5rem; box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.05), 0 10px 30px rgba(0,0,0,0.7);
+            animation: fadeOutStage 0.3s ease forwards 2.8s;
+        }
+        .ticker-header {
+            font-family: monospace; font-size: 0.75rem; color: var(--text-muted);
+            border-bottom: 1px solid var(--text-muted); padding-bottom: 0.5rem; margin-bottom: 1.5rem;
+            display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .ticker-header span { color: var(--continental-gold); font-weight: bold; }
         
-        /* Interactive Showcase Grid */
-        .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
-        .showcase-card { background: rgba(6, 9, 19, 0.6); border: 1px solid var(--border-color); border-radius: 6px; padding: 1.25rem; position: relative; }
-        .showcase-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--neon-blue); border-radius: 6px 0 0 6px; }
-        .showcase-card.featured::before { background: var(--neon-cyan); }
-        .showcase-card.strategic::before { background: var(--neon-amber); }
+        .switchboard-output {
+            font-family: Courier, monospace; font-size: 0.95rem; font-weight: bold;
+            line-height: 1.6; color: #f3f4f6; text-transform: uppercase; letter-spacing: 0.02em;
+        }
+        .type-hit { white-space: nowrap; opacity: 0; width: 0; overflow: hidden; display: flex; justify-content: space-between; }
+        .type-hit:nth-child(1) { animation: strikeKey 0.25s steps(35) forwards 0.2s; }
+        .type-hit:nth-child(2) { animation: strikeKey 0.25s steps(35) forwards 0.8s; color: var(--continental-gold); }
+        .type-hit:nth-child(3) { animation: strikeKey 0.25s steps(35) forwards 1.4s; }
+        .type-hit:nth-child(4) { animation: strikeKey 0.3s steps(35) forwards 2.0s; color: var(--alert-red); font-weight: 900; }
         
-        .card-label { font-size: 0.75rem; text-transform: uppercase; font-family: monospace; color: var(--neon-cyan); font-weight: 700; }
-        .card-title { font-size: 1.15rem; font-weight: 700; color: #ffffff; margin: 0.25rem 0 0.75rem 0; }
-        .sub-brand-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
-        .sub-brand-tag { font-family: monospace; font-size: 0.75rem; background: #1e293b; padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-main); }
-        
-        .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-        @media (max-width: 600px) { .metrics-grid { grid-template-columns: 1fr; } }
-        .metric-card { background: rgba(6, 9, 19, 0.5); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 6px; }
-        .metric-value { font-size: 1.5rem; font-weight: 700; color: var(--neon-cyan); font-family: monospace; }
-        .metric-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
-        
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
-        .form-group { display: flex; flex-direction: column; }
-        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; letter-spacing: 0.05em; }
-        input, textarea { background: #060913; border: 1px solid var(--border-color); border-radius: 4px; padding: 0.75rem; color: #ffffff; font-size: 0.95rem; }
-        input:focus, textarea:focus { outline: none; border-color: var(--neon-cyan); }
-        
-        button { width: 100%; background: linear-gradient(to right, var(--neon-blue), var(--neon-cyan)); color: white; border: none; padding: 1.1rem; border-radius: 4px; font-size: 1rem; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem; }
-        button:hover { opacity: 0.9; }
-        footer { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 4rem; font-family: monospace; }
+        @media (max-width: 500px) { .switchboard-output { font-size: 0.8rem; } }
+        @keyframes strikeKey { to { opacity: 1; width: 100%; } }
+        @keyframes fadeOutStage { to { opacity: 0; transform: scale(0.98); visibility: hidden; } }
+
+        /* PHASE 2: PNEUMATIC PIPE CORES TURNING MULTIPLE AND GALVANIZING */
+        .pneumatic-pipe-network {
+            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
+            animation: pipePhaseInit 3.5s linear forwards 3.0s;
+            perspective: 800px;
+        }
+        .main-pipe-line {
+            position: absolute; width: 6px; height: 100vh; background: rgba(17, 24, 39, 0.6);
+            border-left: 1px solid rgba(59, 130, 246, 0.2); border-right: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .telegram-capsule {
+            position: absolute; top: -10%; width: 14px; height: 40px;
+            background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-blue));
+            border-radius: 6px; box-shadow: 0 0 20px var(--neon-cyan);
+            animation: capsuleShoot 1.4s cubic-bezier(0.7, 0, 0.84, 0) forwards 0.2s;
+        }
+        .galvanized-grid-overlay {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(6, 182, 212, 0.08) 2px, transparent 2px), linear-gradient(90deg, rgba(6, 182, 212, 0.08) 2px, transparent 2px);
+            background-size: 50px 50px; opacity: 0;
+            animation: galvanizeGrid 0.8s ease forwards 1.1s;
+        }
+        @keyframes pipePhaseInit {
+            0% { opacity: 1; visibility: visible; }
+            80% { opacity: 1; transform: scale(1) translateZ(0); }
+            100% { opacity: 1; visibility: visible; transform: scale(3.5) translateZ(500px); }
+        }
+        @keyframes capsuleShoot { 0% { top: -10%; } 100% { top: 110%; } }
+        @keyframes galvanizeGrid {
+            0% { opacity: 0; background-size: 80px 80px; }
+            100% { opacity: 1; background-size: 30px 30px; border: 1px solid rgba(6, 182, 212, 0.2); }
+        }
+
+        /* PHASE 3: LIGHTSPEED HYPER-DRIVE BLINDING WHITE LIGHT STRIKE */
+        .blinding-whiteout-shield {
+            position: absolute; inset: 0; background: #ffffff; opacity: 0; pointer-events: none; z-index: 99;
+            animation: whiteoutStrike 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 6.2s;
+        }
+        @keyframes whiteoutStrike { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
+
+        /* PHASE 4: TERMINATOR 1 HEAVY CHROMIUM METAL LOGO GALVANIZATION */
+        .terminator-identity-reveal {
+            position: absolute; text-align: center; width: 90%; max-width: 750px;
+            opacity: 0; visibility: hidden;
+            animation: terminatorReveal 4.5s ease-out forwards 6.7s;
+        }
+        .metallic-chrome-text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 3rem; font-weight: 900; letter-spacing: 0.12em;
+            text-transform: uppercase; margin-bottom: 0.5rem;
+            background: linear-gradient(to bottom, #ffffff 0%, #cbd5e1 40%, #334155 48%, #1e293b 52%, #94a3b8 60%, #ffffff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.9)) drop-shadow(0 0 20px rgba(6, 182, 212, 0.25));
+            position: relative;
+        }
+        .metallic-chrome-sub {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase;
+            background: linear-gradient(to bottom, #ffffff 0%, #94a3b8 45%, #1e293b 55%, #f8fafc 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+            margin-top: 0.6rem;
+        }
+        .logo-laser-sweep {
+            position: absolute; top: 52%; left: -10%; width: 120%; height: 2px;
+            background: #ef4444; box-shadow: 0 0 14px #ef4444, 0 0 4px #ffffff;
+            opacity: 0; animation: laserGlow 1.2s ease-in-out infinite alternate 1.2s;
+        }
+        @keyframes terminatorReveal {
+            0% { opacity: 0; visibility: visible; transform: scale(0.95); filter: brightness(1.6); }
+            25% { opacity: 1; transform: scale(1); filter: brightness(1); }
+            90% { opacity: 1; transform: scale(1); filter: blur(0); }
+            100% { opacity: 0; visibility: hidden; transform: scale(1.04); filter: blur(5px); }
+        }
+        @keyframes laserGlow { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+        .skip-skit-trigger {
+            position: absolute; bottom: 2rem; font-family: monospace; font-size: 0.75rem;
+            color: #27272a; text-decoration: none; border-bottom: 1px dashed #27272a;
+            z-index: 100; cursor: pointer; transition: color 0.2s;
+        }
+        .skip-skit-trigger:hover { color: var(--neon-cyan); border-color: var(--neon-cyan); }
     </style>
 </head>
 <body>
-<div class="container">
-    <header>
-        <div class="brand-title">THE EXTRACTOR NEXUS</div>
-        <div class="brand-subtitle">SHARPHUB DYNAMICS • PREMIER AGGREGATE CORE</div>
-        <div class="meta-tag">Phase 1 Perimeter Integration • Adelaide Core Nodes • Manila Server Branch</div>
-    </header>
+
+<div class="cinematic-stage">
     
-    <div class="banner-frame">
-        <img src="IMG_0554.jpeg" alt="Tech1 Superhighway Matrix Grid">
-    </div>
-    
-    <section>
-        <h2>The Architecture Shield</h2>
-        <p>Traditional multi-brand networks divide their footprints across fragile mirror domains, triggering silent 20% player traffic leaks to the void when regulatory hurdles drop active entrypoints. Simultaneously, scaling remains bottlenecked by operators employing manual data queues to crawl social paths and file live-chat log screenshots.</p>
-        <p>The Extractor Nexus eliminates user friction entirely by embedding your complex matrix side-by-side inside a 24/7 galvanized interface. Fractured communication lines are instantly straightened into a high-speed cyberspace anycast pipeline, delivering active users directly to your core platform.</p>
-    </section>
-
-    <section>
-        <h2>Turnkey Showcase Concept Map</h2>
-        <p>Our unified gallery interface consolidates premier multi-tenant infrastructure formats under zero-friction viewports, increasing session longevity by completely vaporizing invasive pop-up cross-promotion banners:</p>
-        
-        <div class="showcase-grid">
-            <!-- iPay9 Grid Tier Alignment -->
-            <div class="showcase-card featured">
-                <div class="card-label">Tier 1 • Visibility Frame</div>
-                <div class="card-title">iPay9 Network Cluster</div>
-                <div class="sub-brand-list">
-                    <span class="sub-brand-tag">IPAY9</span>
-                    <span class="sub-brand-tag">BIGPAY77</span>
-                    <span class="sub-brand-tag">ROLEX9</span>
-                    <span class="sub-brand-tag">ME99</span>
-                    <span class="sub-brand-tag">KINGBET9</span>
-                    <span class="sub-brand-tag">99PARTNERS</span>
-                </div>
-                <p style="font-size: 0.85rem; margin: 0;">Consolidating loose network domains into an unblockable single-point showroom gateway.</p>
-            </div>
-
-            <!-- Prestige Alliance (GDay007 Standard) Alignment -->
-            <div class="showcase-card">
-                <div class="card-label">Tier 2 • Interface Grid</div>
-                <div class="card-title">Prestige Alliance Array</div>
-                <div class="sub-brand-list">
-                    <span class="sub-brand-tag">MRBET96</span>
-                    <span class="sub-brand-tag">CROWN20</span>
-                    <span class="sub-brand-tag">PLAY99</span>
-                    <span class="sub-brand-tag">MRWIN77</span>
-                    <span class="sub-brand-tag">VIP15</span>
-                    <span class="sub-brand-tag">SPEED8</span>
-                </div>
-                <p style="font-size: 0.85rem; margin: 0;">Automating traffic load balancing to insulate active user session lifetimes.</p>
-            </div>
-
-            <!-- TAB Partnership Realignment -->
-            <div class="showcase-card strategic">
-                <div class="card-label">Tier 3 • Corridor Loop</div>
-                <div class="card-title">TAB Partnership Node</div>
-                <div class="sub-brand-list">
-                    <span class="sub-brand-tag">CROWN9</span>
-                    <span class="sub-brand-tag">KANGAROO88</span>
-                    <span class="sub-brand-tag">NOVABET13</span>
-                    <span class="sub-brand-tag">XPAY33</span>
-                </div>
-                <p style="font-size: 0.85rem; margin: 0;">Isolating high-value regional traffic flows under verified anycast routing subroutines.</p>
-            </div>
+    <!-- PHASE 1 SWITCHBOARD: VIGOROUS VINTAGE KEYS TYPING CASCADES -->
+    <div class="continental-switchboard-frame">
+        <div class="ticker-header">Accounts Log Framework // <span>Processing Sequence</span></div>
+        <div class="switchboard-output">
+            <div class="type-hit"><span>[MECHANICAL_STRIKE] EXTR_SYS_INBOUND_CONNECT_</span> <span>[OK]</span></div>
+            <div class="type-hit"><span>[RIBBON_PULSE] AUDITING 300+ LIVE PAYID CHANNELS_</span> <span>[RUN]</span></div>
+            <div class="type-hit"><span>[CARRIAGE_RETURN] ALLIANCE STRINGS MAP MATRIX_</span> <span>[LOAD]</span></div>
+            <div class="type-hit"><span>[DEADLINE_ALERT] INFLOW LEAKS PENDING REROUTE_</span> <span>[CRITICAL]</span></div>
         </div>
-    </section>
-    
-    <section>
-        <h2>Commercial Performance Metrics</h2>
-        <p>Our background infrastructure handles path mapping, view translation, and structural resolution on autopilot, ensuring absolute platform tracking continuity:</p>
-        <div class="metrics-grid">
-            <div class="metric-card"><div class="metric-value">99.998%</div><div class="metric-label">Continuous Live Uptime Guarantee</div></div>
-            <div class="metric-card"><div class="metric-value">16.4 ms</div><div class="metric-label">Edge Route Latency Ceiling</div></div>
+    </div>
 
+    <!-- PHASE 2 NETWORK: TELEGRAM TUBE RUSHING DOWN OLD PIPE SYSTEM -->
+    <div class="pneumatic-pipe-network">
+        <div class="main-pipe-line">
+            <div class="telegram-capsule"></div>
+        </div>
+        <div class="galvanized-grid-overlay"></div>
+    </div>
+
+    <!-- PHASE 3 OVERDRIVE: SPEED ACCELERATION INTO BLINDING WHITE LIGHT -->
+    <div class="blinding-whiteout-shield"></div>
+
+    <!-- PHASE 4 BRANDING: INDUSTRIAL FORGED TERMINATOR 1 CHROME METAL METALLURGY -->
+    
+        <h1 class="metallic-chrome-text">THE EXTRACTOR NEXUS<div class="logo-laser-sweep"></div></h1>
+        <h2 class="metallic-chrome-sub">A SHARPHUB DYNAMICS PRODUCTION</h2>
+    </div>
+
+    <!-- Manual System Skip Trigger -->
+    <a href="showroom-matrix.html" class="skip-skit-trigger">BYPASS SWITCHBOARD TERMINAL & ENTER COMMAND BRIDGE</a>
+</div>
+
+<script>
+    // System automatically routes the turnkey director straight onto the 300+ command matrix layout after exactly 10.5 seconds
+    setTimeout(function() {
+        window.location.href = "showroom-matrix.html";
+    }, 10500);
+</script>
+
+</body>
+</html>
