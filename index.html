@@ -3,69 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE EXTRACTOR NEXUS • TACTICAL OPERATIONAL CORE</title>
+    <title>THE EXTRACTOR NEXUS • SYSTEM INITIATION</title>
     <style>
         :root {
-            --bg-color: #05070f;
-            --card-bg: #0b0e17;
-            --inner-bg: #070911;
-            --grid-line: #171d2c;
+            --bg-color: #04060b;
+            --card-bg: #090e1a;
+            --inner-bg: #05080f;
+            --grid-line: #121824;
             --text-main: #f1f5f9;
-            --text-muted: #64748b;
+            --text-muted: #4e5d78;
             --neon-cyan: #06b6d4;
             --neon-blue: #3b82f6;
             --neon-amber: #f59e0b;
-            --border-color: #1e293b;
+            --border-color: #1a2336;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
+        body, html {
             background-color: var(--bg-color);
             color: var(--text-main);
-            /* Elite Typewriter Monospace Aesthetic */
             font-family: "Courier New", Courier, monospace;
-            padding: 2rem 1rem;
-            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 25px 25px;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
         }
-        .container { max-width: 1100px; margin: 0 auto; }
-        
-        header {
-            background: rgba(11, 14, 23, 0.9);
-            border: 1px solid var(--border-color);
+
+        /* ========================================================
+           STAGE 1: THE MARVEL / JOHN WICK TYPEWRITER CUTS VIEWPORT 
+           ======================================================== */
+        #cinematic-viewport {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #010205;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 2rem;
-            border-radius: 4px;
-            margin-bottom: 2rem;
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* Phrenetic Hands/Keyboard Cut Boxes */
+        .typing-montage-frame {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            height: 140px;
+            border: 1px solid #111;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #020306;
+            overflow: hidden;
+        }
+        .montage-clip-text {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.03);
+            letter-spacing: -2px;
+            position: absolute;
+            width: 150%;
+            text-align: center;
+            user-select: none;
+        }
+        .live-carriage-line {
+            font-size: 1.1rem;
+            color: #00ffcc;
+            text-shadow: 0 0 8px rgba(0,255,204,0.4);
+            width: 90%;
             text-align: left;
+            border-right: 2px solid #00ffcc;
+            white-space: pre;
+            overflow: hidden;
+        }
+
+        /* Pneumatic Glass Transmission Cylinder */
+        .pneumatic-container {
+            width: 100%;
+            max-width: 500px;
+            height: 60px;
+            border: 2px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(26,35,54,0.2) 0%, rgba(5,8,15,0.4) 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .capsule-cartridge {
+            width: 120px;
+            height: 40px;
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            font-weight: bold;
             position: relative;
         }
-        .hub-badge {
-            display: inline-block;
-            font-size: 0.8rem;
-            color: var(--neon-amber);
-            border: 1px solid var(--neon-amber);
-            padding: 0.3rem 0.75rem;
-            border-radius: 2px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        .title { font-size: 2rem; font-weight: 900; letter-spacing: 0.05em; color: #ffffff; }
-        .subtitle { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; text-transform: uppercase; }
 
-        /* Tactical Video Content Container Block */
-        .video-canvas-frame { 
-            width: 100%; 
-            height: 260px; 
-            background: #000; 
-            border: 1px solid var(--border-color); 
-            border-radius: 4px; 
-            margin-bottom: 2.5rem; 
-            overflow: hidden; 
+        /* Hyperspace Pipe Transition Overlays */
+        .hyperspace-pipe-tunnel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+            background-color: #010204;
+            overflow: hidden;
         }
+        .star-vector-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), #ffffff);
+            height: 2px;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        /* Terminator Striking Credit Overlays */
+        .terminator-flash-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #ffffff;
+            opacity: 0;
+            display: none;
+            z-index: 10000;
+        }
+        .terminator-logo-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #04050a;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+        }
+        .t-logo {
+            max-width: 480px;
+            width: 85%;
+            opacity: 0;
+            transform: scale(1.15);
+            transition: all 1.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+            filter: drop-shadow(0 0 20px rgba(59,130,246,0.3));
+        }
+
+        /* ========================================================
+           STAGE 2: MONOSPACE TACTICAL OPERATIONAL CORE 
+           ======================================================== */
+        .master-terminal-wrapper {
+            opacity: 0;
+            display: none;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            transition: opacity 1s ease-out;
+        }
+        header { background: rgba(9, 14, 26, 0.9); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; margin-bottom: 2rem; }
+        .title-main { font-size: 1.8rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
+        .subtitle-main { font-size: 0.85rem; color: var(--neon-cyan); text-transform: uppercase; margin-top: 0.4rem; }
         
         section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; margin-bottom: 2rem; }
-        h2 { font-size: 1.2rem; margin-bottom: 1rem; text-transform: uppercase; color: var(--neon-cyan); display: flex; align-items: center; }
-        h2::before { content: '>'; margin-right: 0.5rem; color: var(--neon-cyan); }
-        p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; }
+        h2 { font-size: 1.15rem; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 1rem; display: flex; align-items: center; }
+        h2::before { content: '> '; color: var(--neon-cyan); }
+        p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
 
         .fleet-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
         .fleet-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; position: relative; }
@@ -73,73 +190,39 @@
         .fleet-speed::before { background: var(--neon-amber); }
         .fleet-prestige::before { background: var(--neon-cyan); }
         
-        .fleet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
-        .fleet-title { font-size: 1.3rem; font-weight: 800; color: #ffffff; }
-        .fleet-counter { font-size: 0.8rem; color: var(--neon-cyan); background: rgba(6, 182, 212, 0.1); padding: 0.35rem 0.75rem; border-radius: 2px; border: 1px solid rgba(6, 182, 212, 0.2); }
+        .fleet-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .fleet-title { font-size: 1.25rem; font-weight: 800; color: #ffffff; }
+        .fleet-counter { font-size: 0.75rem; color: var(--neon-cyan); background: rgba(6, 182, 212, 0.08); padding: 0.3rem 0.6rem; border: 1px solid rgba(6, 182, 212, 0.15); }
         
-        .armada-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
-        .armada-node { background-color: var(--inner-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
-        .node-brand { font-size: 0.85rem; font-weight: 700; color: #ffffff; }
-        .node-tag { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; }
-        .node-indicator { width: 6px; height: 6px; background-color: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 8px var(--neon-cyan); }
-        .fleet-speed .node-indicator { background-color: var(--neon-amber); box-shadow: 0 0 8px var(--neon-amber); }
-        
-        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .metric-card { background: rgba(6, 9, 19, 0.5); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 4px; }
-        .metric-value { font-size: 1.4rem; font-weight: 700; color: var(--neon-cyan); }
-        .metric-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
-        
-        .intake-section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; }
+        .armada-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.6rem; }
+        .armada-node { background-color: var(--inner-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
+        .node-brand { font-size: 0.8rem; font-weight: 700; color: #ffffff; }
+        .node-tag { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
+        .node-indicator { width: 5px; height: 5px; background-color: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 6px var(--neon-cyan); }
+        .fleet-speed .node-indicator { background-color: var(--neon-amber); box-shadow: 0 0 6px var(--neon-amber); }
+
+        .intake-section { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
         .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
-        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
-        input, textarea { background: #05070f; border: 1px solid var(--border-color); border-radius: 2px; padding: 0.75rem; color: #ffffff; font-family: monospace; font-size: 0.95rem; }
-        input:focus, textarea:focus { outline: none; border-color: var(--neon-cyan); }
-        button { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 1.1rem; border-radius: 2px; font-size: 0.95rem; font-weight: 700; font-family: monospace; cursor: pointer; text-transform: uppercase; margin-top: 0.5rem; transition: all 0.2s; }
-        button:hover { background: var(--neon-blue); color: #ffffff; }
-        footer { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 4rem; }
+        label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
+        input, textarea { background: #04060b; border: 1px solid var(--border-color); border-radius: 2px; padding: 0.75rem; color: #ffffff; font-family: monospace; font-size: 0.9rem; }
+        button.submit-btn { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 1.1rem; font-family: monospace; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; }
+        button.submit-btn:hover { background: var(--neon-blue); color: #ffffff; }
+        
+        .skip-intro-btn { position: absolute; bottom: 2rem; right: 2rem; background: transparent; border: 1px solid #222; color: #444; padding: 0.5rem 1rem; font-size: 0.75rem; cursor: pointer; }
     </style>
 </head>
 <body>
-<div class="container">
-    <header>
-        <div class="hub-badge">System Terminal Config • Active Node Sync</div>
-        <div class="title">THE EXTRACTOR NEXUS</div>
-        <div class="subtitle">Operations Matrix Layer • Adelaide Analytics Core</div>
-    </header>
 
-    <!-- Optimized Mobile-Safe Video Stream Player -->
-    <div class="video-canvas-frame">
-        <video autoplay loop muted playsinline poster="IMG_0554.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="superhighway.mp4" type="video/mp4">
-        </video>
-    </div>
+    <!-- ========================================================
+       STAGE 1: HARDWARE LAYER (THE CINEMATIC SEQUENCE CLOSURES)
+       ======================================================== -->
+    <div id="cinematic-viewport">
+        <!-- Mechanical Keyboard / Hands Section -->
+        <div id="montage-box" class="typing-montage-frame">
+            <div class="montage-clip-text">ASDFGHJKL QWERTYUIOP ZXCVBNM</div>
+            <div id="carriage-line" class="live-carriage-line"></div>
+        </div>
 
-    <section>
-        <h2>The Interception Shield</h2>
-        <p>Traditional networks partition active users across fragile sub-brand entry points, triggering massive audience lifecycle losses when localized domains drop. The Extractor Nexus stabilizes the network perimeter. By routing structural connections side-by-side inside a galvanized 24/7 terminal layer, we bypass manual data bottlenecks entirely.</p>
-    </section>
-
-    <div class="fleet-grid">
-        <!-- FLEET ARM 1: SPEED8 ARMADA -->
-        <div class="fleet-card fleet-speed">
-            <div class="fleet-header">
-                <div>
-                    <div class="fleet-title">SPEED8 FLEET MATRIX</div>
-                    <div class="fleet-subtitle">White-Label Cascade Configuration</div>
-                </div>
-                <div class="fleet-counter">16 CASINOS ONLINE</div>
-            </div>
-            <div class="armada-grid">
-                <div class="armada-node"><div class="node-info"><div class="node-brand">GDAY007</div><div class="node-tag">Core Node</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">WINSHARK88</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">SPLASH77</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">GALAXY96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">WINSTARTO</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">3W96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">NAGA96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">NEOAUS96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">MEGADICE88</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">LUXEZ7</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
-                <div class="armada-node"><div class="node-info"><div class="node-brand">MRBET96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+        <!-- Pneumatic Pipe Matrix -->
+        <div id="tube-conduit" class="pneumatic-container">
