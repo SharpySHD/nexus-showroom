@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE EXTRACTOR NEXUS • PREMIER TURNKEY HUB</title>
+    <style>
+        :root {
+            --bg-color: #060913;
+            --card-bg: #0d1527;
+            --grid-line: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --neon-cyan: #06b6d4;
+            --neon-blue: #3b82f6;
+            --neon-amber: #f59e0b;
+            --neon-red: #ef4444;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 2rem 1rem;
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(13, 21, 39, 0.8);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+        .live-tag {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--neon-amber);
+            border: 1px solid var(--neon-amber);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .title { font-size: 2.2rem; font-weight: 900; letter-spacing: 0.05em; color: #ffffff; }
+        .subtitle { font-size: 1rem; color: var(--neon-cyan); text-transform: uppercase; margin-top: 0.25rem; font-weight: 600; }
+        .banner-frame { width: 100%; height: 220px; background: #000; border: 1px solid #1e293b; border-radius: 8px; margin-bottom: 2rem; overflow: hidden; }
+        .banner-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .promo-alert { background: linear-gradient(90deg, rgba(245,158,11,0.15) 0%, rgba(6,182,212,0.15) 100%); border: 1px solid var(--neon-amber); border-radius: 8px; padding: 1.5rem; margin-bottom: 2.5rem; text-align: center; }
+        .promo-alert h3 { color: var(--neon-amber); text-transform: uppercase; font-size: 1.1rem; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+        .promo-alert p { color: var(--text-main); font-size: 0.95rem; }
+        .showcase-title { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 1rem; color: #ffffff; letter-spacing: 0.05em; }
+        .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+        .matrix-card { background-color: var(--card-bg); border: 1px solid #1e293b; border-radius: 8px; padding: 1.5rem; position: relative; overflow: hidden; }
+        .matrix-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--neon-blue); }
+        .matrix-card.featured::before { background: var(--neon-cyan); }
+        .matrix-card.vacant::before { background: var(--neon-red); }
+        .brand-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .brand-name { font-size: 1.1rem; font-weight: 700; color: #ffffff; letter-spacing: 0.03em; }
+        .slot-status { font-family: monospace; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; }
+        .status-occupied { background: rgba(59,130,246,0.2); color: var(--neon-blue); border: 1px solid var(--neon-blue); }
+        .status-featured { background: rgba(6,182,212,0.2); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); }
+        .status-vacant { background: rgba(239,68,68,0.2); color: var(--neon-red); border: 1px solid var(--neon-red); }
+        .mock-display-frame { width: 100%; height: 85px; background: #060913; border: 1px dashed #1e293b; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; margin-bottom: 1rem; text-align: center; padding: 0 1rem; }
+        .matrix-card.featured .mock-display-frame { border-color: var(--neon-cyan); color: var(--neon-cyan); background: rgba(6,182,212,0.05); font-weight: 600; }
+        .metric-row { display: flex; justify-content: space-between; font-size: 0.85rem; border-top: 1px solid #1e293b; padding-top: 0.5rem; margin-top: 0.5rem; }
+        .metric-lbl { color: var(--text-muted); }
+        .metric-val { font-family: monospace; color: var(--neon-cyan); }
+        .intake-section { background-color: var(--card-bg); border: 1px solid #1e293b; border-radius: 8px; padding: 2rem; }
+        .intake-section h2 { font-size: 1.4rem; text-transform: uppercase; margin-bottom: 1rem; color: #ffffff; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; letter-spacing: 0.05em; }
+        input, textarea { background: #060913; border: 1px solid #1e293b; border-radius: 4px; padding: 0.75rem; color: #fff; font-size: 0.95rem; }
+        input:focus, textarea:focus { outline: none; border-color: var(--neon-cyan); }
+        button { background: linear-gradient(to right, var(--neon-blue), var(--neon-cyan)); color: #fff; border: none; padding: 1rem; border-radius: 4px; font-weight: 700; text-transform: uppercase; cursor: pointer; letter-spacing: 0.05em; margin-top: 0.5rem; }
+        button:hover { opacity: 0.9; }
+        footer { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 3rem; font-family: monospace; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="live-tag">System Interface Teaser Node • Live Simulation Active</div>
+        <div class="title">THE EXTRACTOR NEXUS</div>
+        <div class="subtitle">Premier Turnkey Showcase Layer • SharpHub Dynamics</div>
+    </header>
+
+    <div class="banner-frame">
+        <img src="IMG_0554.jpeg" alt="Tech1 Superhighway Matrix Grid">
+    </div>
+
+    <div class="promo-alert">
+        <h3>📢 PREMIER BRAND INITIALIZATION INCENTIVE</h3>
+        <p>To launch real-time audience metrics, we are allocating <strong>1 Selected Premier Turnkey Partner</strong> full layout deployment with <strong>30 Days of Free Primary Advertising</strong> + an ongoing 50% discount on the following alignment cycle. Route our unified player traffic directly to your front door instantly.</p>
+    </div>
+
+    <div class="showcase-title">Showroom Integration Concept Map (Premier Network Tiers)</div>
+    <div class="matrix-grid">
+        <!-- Slot 1: Prestige Layout Target Concept -->
+        <div class="matrix-card featured">
+            <div class="brand-header">
+                <div class="brand-name">PRESTIGE / IPAY9 ALIGNMENT</div>
+                <div class="slot-status status-featured">FREE CORRIDOR ACTIVE</div>
+            </div>
+            <div class="mock-display-frame">[ 1200px × 180px PREMIER NATIVE HEADER FRAME ACTIVE ]</div>
+            <div class="metric-row"><div class="metric-lbl">Showroom Viewport</div><div class="metric-val">Primary Anchor Node</div></div>
+            <div class="metric-row"><div class="metric-lbl">Traffic Handshake</div><div class="metric-val">0% Labor Queue Autopilot</div></div>
+        </div>
+
+        <!-- Slot 2: TAB Partnership Target Concept -->
+        <div class="matrix-card">
+            <div class="brand-header">
+                <div class="brand-name">TAB PARTNERSHIP NETWORKS</div>
+                <div class="slot-status status-occupied">RESERVED (NDA CODES)</div>
+            </div>
+            <div class="mock-display-frame">🔒 Architecture Shield Engaged</div>
+            <div class="metric-row"><div class="metric-lbl">Showroom Viewport</div><div class="metric-val">Secure Sidebar Matrix</div></div>
+            <div class="metric-row"><div class="metric-lbl">Traffic Handshake</div><div class="metric-val">16.4 ms Anycast Loop</div></div>
+        </div>
+
+        <!-- Open Tier to Induce Panic -->
+        <div class="matrix-card vacant">
+            <div class="brand-header">
+                <div class="brand-name">PREMIER TURNKEY VACANCY 03</div>
+                <div class="slot-status status-vacant">VACANT</div>
+            </div>
+            <div class="mock-display-frame">⚠️ Allocation Gateway Unlocked</div>
+            <div class="metric-row"><div class="metric-lbl">Showroom Viewport</div><div class="metric-val">Corridor Allocation Open</div></div>
+            <div class="metric-row"><div class="metric-lbl">Traffic Handshake</div><div class="metric-val">Pending Secure Deposit</div></div>
+        </div>
+    </div>
+
+    <div class="intake-section">
+        <h2>Initialize Corridor Clearance Validation</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Advanced edge-routing tables, bunny-hop parameters, and core aggregate synchronization subroutines remain classified under strict Privacy Policies. Submit your routing metrics to unlock the full digital presentation layer.</p>
+        <form action="mailto:extractorshd@gmail.com" method="post" enctype="text/plain">
+            <div class="form-grid">
+                <div class="form-group"><label>Syndicate / Corporate Identity</label><input type="text" name="Syndicate" required></div>
