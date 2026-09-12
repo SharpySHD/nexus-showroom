@@ -3,192 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE EXTRACTOR NEXUS • RUNTIME SYSTEM INITIALIZATION</title>
+    <title>THE EXTRACTOR NEXUS • TACTICAL OPERATIONAL CORE</title>
     <style>
         :root {
-            --bg-color: #03050c;
+            --bg-color: #05070f;
+            --card-bg: #0b0e17;
+            --inner-bg: #070911;
+            --grid-line: #171d2c;
+            --text-main: #f1f5f9;
+            --text-muted: #64748b;
             --neon-cyan: #06b6d4;
             --neon-blue: #3b82f6;
-            --continental-gold: #d4af37;
-            --alert-red: #ef4444;
-            --border-color: #111827;
-            --text-muted: #374151;
+            --neon-amber: #f59e0b;
+            --border-color: #1e293b;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body, html {
+        body {
             background-color: var(--bg-color);
-            color: #ffffff;
-            font-family: Garamond, Georgia, serif;
-            height: 100vh; overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
+            color: var(--text-main);
+            /* Elite Typewriter Monospace Aesthetic */
+            font-family: "Courier New", Courier, monospace;
+            padding: 2rem 1rem;
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 25px 25px;
         }
-
-        .cinematic-stage {
-            width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative;
-        }
-
-        /* PHASE 1: RETRO SWITCHBOARD KEYBOARD CLACKS (0.0s - 3.0s) */
-        .continental-switchboard-frame {
-            position: absolute; width: 90%; max-width: 650px; text-align: left;
-            background: #000; border: 1px solid var(--border-color); border-radius: 4px;
-            padding: 2.5rem; box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.05), 0 10px 30px rgba(0,0,0,0.7);
-            animation: fadeOutSwitchboard 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards 3.0s;
-            z-index: 10;
-        }
-        .ticker-header {
-            font-family: monospace; font-size: 0.75rem; color: var(--text-muted);
-            border-bottom: 1px solid var(--text-muted); padding-bottom: 0.5rem; margin-bottom: 1.5rem;
-            display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: 0.1em;
-        }
-        .ticker-header span { color: var(--continental-gold); font-weight: bold; }
-        .switchboard-output {
-            font-family: Courier, monospace; font-size: 0.95rem; font-weight: bold;
-            line-height: 1.6; color: #f3f4f6; text-transform: uppercase; letter-spacing: 0.02em;
-        }
-        .type-hit { white-space: nowrap; opacity: 0; width: 0; overflow: hidden; display: flex; justify-content: space-between; }
-        .type-hit:nth-child(1) { animation: strikeKey 0.25s steps(35) forwards 0.2s; }
-        .type-hit:nth-child(2) { animation: strikeKey 0.25s steps(35) forwards 0.8s; color: var(--continental-gold); }
-        .type-hit:nth-child(3) { animation: strikeKey 0.25s steps(35) forwards 1.4s; }
-        .type-hit:nth-child(4) { animation: strikeKey 0.3s steps(35) forwards 2.0s; color: var(--alert-red); font-weight: 900; }
+        .container { max-width: 1100px; margin: 0 auto; }
         
-        @keyframes strikeKey { to { opacity: 1; width: 100%; } }
-        @keyframes fadeOutSwitchboard { to { opacity: 0; transform: scale(0.96); visibility: hidden; } }
-
-        /* PHASE 2: PNEUMATIC PIPELINES & GALVANIZED NETWORK (3.0s - 6.0s) */
-        .pneumatic-pipe-network {
-            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden;
-            animation: pipePhaseInit 3.0s ease-out forwards 3.0s;
-            z-index: 5;
-        }
-        .main-pipe-line {
-            position: absolute; width: 6px; height: 100vh; background: rgba(17, 24, 39, 0.6);
-            border-left: 1px solid rgba(59, 130, 246, 0.2); border-right: 1px solid rgba(59, 130, 246, 0.2);
-        }
-        .telegram-capsule {
-            position: absolute; top: -10%; width: 14px; height: 40px;
-            background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-blue));
-            border-radius: 6px; box-shadow: 0 0 20px var(--neon-cyan);
-            animation: capsuleShoot 1.0s cubic-bezier(0.7, 0, 0.84, 0) forwards 0.1s;
-        }
-        .galvanized-grid-overlay {
-            position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(6, 182, 212, 0.08) 2px, transparent 2px), linear-gradient(90deg, rgba(6, 182, 212, 0.08) 2px, transparent 2px);
-            background-size: 50px 50px; opacity: 0;
-            animation: galvanizeGrid 0.6s ease forwards 0.8s;
-        }
-        @keyframes pipePhaseInit {
-            0% { opacity: 1; visibility: visible; transform: scale(1); }
-            70% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0; visibility: hidden; transform: scale(1.4); filter: brightness(2); }
-        }
-        @keyframes capsuleShoot { 0% { top: -10%; } 100% { top: 110%; } }
-        @keyframes galvanizeGrid {
-            0% { opacity: 0; background-size: 60px 60px; }
-            100% { opacity: 1; background-size: 30px 30px; border: 1px solid rgba(6, 182, 212, 0.2); }
-        }
-
-        /* PHASE 3: SPEED HYPER-DRIVE BLINDING WHITEOUT (5.8s - 7.0s) */
-        .blinding-whiteout-shield {
-            position: absolute; inset: 0; background: #ffffff; opacity: 0; pointer-events: none; z-index: 99;
-            animation: whiteoutStrike 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 5.6s;
-        }
-        @keyframes whiteoutStrike {
-            0% { opacity: 0; }
-            20% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        /* PHASE 4: TERMINATOR 1 CHROMIUM METAL LOGO FORGING (6.2s - 10.5s) */
-        .terminator-identity-reveal {
-            position: absolute; text-align: center; width: 90%; max-width: 750px;
-            opacity: 0; visibility: hidden;
-            animation: terminatorSequence 4.3s ease-out forwards 6.2s;
-            z-index: 20;
-        }
-        .metallic-chrome-text {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 3rem; font-weight: 900; letter-spacing: 0.12em;
-            text-transform: uppercase; margin-bottom: 0.5rem;
-            background: linear-gradient(to bottom, #ffffff 0%, #cbd5e1 40%, #334155 48%, #1e293b 52%, #94a3b8 60%, #ffffff 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.9)) drop-shadow(0 0 20px rgba(6, 182, 212, 0.25));
+        header {
+            background: rgba(11, 14, 23, 0.9);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            text-align: left;
             position: relative;
         }
-        .metallic-chrome-sub {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 1rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase;
-            background: linear-gradient(to bottom, #ffffff 0%, #94a3b8 45%, #1e293b 55%, #f8fafc 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
-            margin-top: 0.6rem;
+        .hub-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--neon-amber);
+            border: 1px solid var(--neon-amber);
+            padding: 0.3rem 0.75rem;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
-        .logo-laser-sweep {
-            position: absolute; top: 52%; left: -10%; width: 120%; height: 2px;
-            background: #ef4444; box-shadow: 0 0 14px #ef4444, 0 0 4px #ffffff;
-            opacity: 0; animation: laserGlow 1.0s ease-in-out infinite alternate 0.4s;
+        .title { font-size: 2rem; font-weight: 900; letter-spacing: 0.05em; color: #ffffff; }
+        .subtitle { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; text-transform: uppercase; }
+
+        /* Tactical Video Content Container Block */
+        .video-canvas-frame { 
+            width: 100%; 
+            height: 260px; 
+            background: #000; 
+            border: 1px solid var(--border-color); 
+            border-radius: 4px; 
+            margin-bottom: 2.5rem; 
+            overflow: hidden; 
         }
         
-        /* Firefox Fixed: Standard keyframes syntax handles the transition timeline flawlessly */
-        @keyframes terminatorSequence {
-            0% { opacity: 0; visibility: visible; transform: scale(0.96); filter: brightness(1.5); }
-            15% { opacity: 1; transform: scale(1); filter: brightness(1); }
-            75% { opacity: 1; transform: scale(1); filter: blur(0); }
-            /* PHASE 5: THE SEAMLESS FADE TO ABSOLUTE BLACK DISSOLVE */
-            100% { opacity: 0; visibility: hidden; transform: scale(1.02); filter: blur(6px); }
-        }
-        @keyframes laserGlow { 0% { opacity: 0; } 100% { opacity: 1; } }
+        section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.2rem; margin-bottom: 1rem; text-transform: uppercase; color: var(--neon-cyan); display: flex; align-items: center; }
+        h2::before { content: '>'; margin-right: 0.5rem; color: var(--neon-cyan); }
+        p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; }
 
-        .skip-skit-trigger {
-            position: absolute; bottom: 2rem; font-family: monospace; font-size: 0.75rem;
-            color: #27272a; text-decoration: none; border-bottom: 1px dashed #27272a;
-            z-index: 100; cursor: pointer; transition: color 0.2s;
-        }
-        .skip-skit-trigger:hover { color: var(--neon-cyan); border-color: var(--neon-cyan); }
+        .fleet-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+        .fleet-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; position: relative; }
+        .fleet-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; }
+        .fleet-speed::before { background: var(--neon-amber); }
+        .fleet-prestige::before { background: var(--neon-cyan); }
+        
+        .fleet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+        .fleet-title { font-size: 1.3rem; font-weight: 800; color: #ffffff; }
+        .fleet-counter { font-size: 0.8rem; color: var(--neon-cyan); background: rgba(6, 182, 212, 0.1); padding: 0.35rem 0.75rem; border-radius: 2px; border: 1px solid rgba(6, 182, 212, 0.2); }
+        
+        .armada-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+        .armada-node { background-color: var(--inner-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
+        .node-brand { font-size: 0.85rem; font-weight: 700; color: #ffffff; }
+        .node-tag { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; }
+        .node-indicator { width: 6px; height: 6px; background-color: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 8px var(--neon-cyan); }
+        .fleet-speed .node-indicator { background-color: var(--neon-amber); box-shadow: 0 0 8px var(--neon-amber); }
+        
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .metric-card { background: rgba(6, 9, 19, 0.5); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: 4px; }
+        .metric-value { font-size: 1.4rem; font-weight: 700; color: var(--neon-cyan); }
+        .metric-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+        
+        .intake-section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
+        input, textarea { background: #05070f; border: 1px solid var(--border-color); border-radius: 2px; padding: 0.75rem; color: #ffffff; font-family: monospace; font-size: 0.95rem; }
+        input:focus, textarea:focus { outline: none; border-color: var(--neon-cyan); }
+        button { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 1.1rem; border-radius: 2px; font-size: 0.95rem; font-weight: 700; font-family: monospace; cursor: pointer; text-transform: uppercase; margin-top: 0.5rem; transition: all 0.2s; }
+        button:hover { background: var(--neon-blue); color: #ffffff; }
+        footer { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 4rem; }
     </style>
 </head>
 <body>
+<div class="container">
+    <header>
+        <div class="hub-badge">System Terminal Config • Active Node Sync</div>
+        <div class="title">THE EXTRACTOR NEXUS</div>
+        <div class="subtitle">Operations Matrix Layer • Adelaide Analytics Core</div>
+    </header>
 
-<div class="cinematic-stage">
-    
-    <!-- PHASE 1: RETRO SWITCHBOARD KEYBOARD CLACKS -->
-    <div class="continental-switchboard-frame">
-        <div class="ticker-header">Accounts Log Framework // <span>Processing Sequence</span></div>
-        <div class="switchboard-output">
-            <div class="type-hit"><span>[MECHANICAL_STRIKE] EXTR_SYS_INBOUND_CONNECT_</span> <span>[OK]</span></div>
-            <div class="type-hit"><span>[RIBBON_PULSE] AUDITING 300+ LIVE PAYID CHANNELS_</span> <span>[RUN]</span></div>
-            <div class="type-hit"><span>[CARRIAGE_RETURN] ALLIANCE STRINGS MAP MATRIX_</span> <span>[LOAD]</span></div>
-            <div class="type-hit"><span>[DEADLINE_ALERT] INFLOW LEAKS PENDING REROUTE_</span> <span>[CRITICAL]</span></div>
-        </div>
+    <!-- Optimized Mobile-Safe Video Stream Player -->
+    <div class="video-canvas-frame">
+        <video autoplay loop muted playsinline poster="IMG_0554.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="superhighway.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <!-- PHASE 2: PNEUMATIC PIPELINES & GALVANIZED NETWORK -->
-    <div class="pneumatic-pipe-network">
-        <div class="main-pipe-line">
-            <div class="telegram-capsule"></div>
-        </div>
-        <div class="galvanized-grid-overlay"></div>
-    </div>
+    <section>
+        <h2>The Interception Shield</h2>
+        <p>Traditional networks partition active users across fragile sub-brand entry points, triggering massive audience lifecycle losses when localized domains drop. The Extractor Nexus stabilizes the network perimeter. By routing structural connections side-by-side inside a galvanized 24/7 terminal layer, we bypass manual data bottlenecks entirely.</p>
+    </section>
 
-    <!-- PHASE 3: SPEED OVERDRIVE FLASH OVERLAY -->
-    <div class="blinding-whiteout-shield"></div>
-
-    <!-- PHASE 4 & 5: CHROMIUM METALLURGY LOGO FORGE + FADE TO ABSOLUTE BLACK -->
-    
-        <h1 class="metallic-chrome-text">THE EXTRACTOR NEXUS<div class="logo-laser-sweep"></div></h1>
-        <h2 class="metallic-chrome-sub">A SHARPHUB DYNAMICS PRODUCTION</h2>
-    </div>
-
-    <!-- Manual System Bypass Option -->
-    <a href="showroom-matrix.html" class="skip-skit-trigger">BYPASS SWITCHBOARD TERMINAL & ENTER COMMAND BRIDGE</a>
-</div>
-
-<script>
-    function executeSystemHandshake() {
-        window.location.href = "showroom-matrix.html";
-    }
-
-    // Fixed Master Clock: Safely handles the chronological redirect after exactly 10.5 seconds
-    setTimeout(executeSystemHandshake, 10500);
-
-    // iPad Tap Interaction Safeguard: Instantly triggers the handshake to bypass device caching locks
+    <div class="fleet-grid">
+        <!-- FLEET ARM 1: SPEED8 ARMADA -->
+        <div class="fleet-card fleet-speed">
+            <div class="fleet-header">
+                <div>
+                    <div class="fleet-title">SPEED8 FLEET MATRIX</div>
+                    <div class="fleet-subtitle">White-Label Cascade Configuration</div>
+                </div>
+                <div class="fleet-counter">16 CASINOS ONLINE</div>
+            </div>
+            <div class="armada-grid">
+                <div class="armada-node"><div class="node-info"><div class="node-brand">GDAY007</div><div class="node-tag">Core Node</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">WINSHARK88</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">SPLASH77</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">GALAXY96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">WINSTARTO</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">3W96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">NAGA96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">NEOAUS96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">MEGADICE88</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">LUXEZ7</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
+                <div class="armada-node"><div class="node-info"><div class="node-brand">MRBET96</div><div class="node-tag">Casino Arm</div></div><div class="node-indicator"></div></div>
