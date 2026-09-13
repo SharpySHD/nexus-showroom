@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE EXTRACTOR NEXUS • INITIALIZATION</title>
+    <title>THE EXTRACTOR NEXUS • ENTERPRISE HUB CONFIG</title>
     <style>
         :root {
-            --bg-color: #04060b;
-            --card-bg: #090e1a;
-            --inner-bg: #05080f;
-            --grid-line: #121824;
+            --bg-color: #03050a;
+            --card-bg: #080d18;
+            --inner-bg: #04060c;
+            --grid-line: #101622;
             --text-main: #f1f5f9;
             --text-muted: #4e5d78;
             --neon-cyan: #06b6d4;
             --neon-blue: #3b82f6;
             --neon-amber: #f59e0b;
-            --border-color: #1a2336;
+            --border-color: #162032;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html {
@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* --- STAGE 1: CINEMATIC MULTIMEDIA VIEWFINDER --- */
+        /* --- MODULE 1: THE MARVEL / JOHN WICK CINEMATIC SEQUENCING STAGE --- */
         #cinematic-viewport {
             position: fixed;
             top: 0;
@@ -42,7 +42,6 @@
             justify-content: center;
             padding: 2rem;
         }
-
         .typing-montage-frame {
             width: 100%;
             max-width: 650px;
@@ -56,174 +55,84 @@
             overflow: hidden;
             position: relative;
         }
-        .montage-clip-bg {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: rgba(255,255,255,0.02);
-            letter-spacing: -2px;
-            position: absolute;
-            width: 150%;
-            text-align: center;
-            user-select: none;
-        }
-        .live-carriage-line {
-            font-size: 1.1rem;
-            color: #00ffcc;
-            text-shadow: 0 0 8px rgba(0,255,204,0.4);
-            width: 90%;
-            text-align: left;
-            border-right: 2px solid #00ffcc;
-            white-space: pre-wrap;
-            overflow: hidden;
-        }
+        .montage-clip-bg { font-size: 2.2rem; font-weight: 900; color: rgba(255,255,255,0.02); letter-spacing: -2px; position: absolute; width: 150%; text-align: center; user-select: none; }
+        .live-carriage-line { font-size: 1.1rem; color: #00ffcc; text-shadow: 0 0 8px rgba(0,255,204,0.4); width: 90%; text-align: left; border-right: 2px solid #00ffcc; white-space: pre-wrap; overflow: hidden; }
+        .pneumatic-container { width: 100%; max-width: 500px; height: 60px; border: 2px solid var(--border-color); background: linear-gradient(180deg, rgba(26,35,54,0.2) 0%, rgba(5,8,15,0.4) 100%); border-radius: 30px; display: none; align-items: center; padding: 0 10px; }
+        .capsule-cartridge { width: 140px; height: 40px; background: rgba(6, 182, 212, 0.2); border: 1px solid var(--neon-cyan); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--neon-cyan); font-weight: bold; }
+        .hyperspace-tunnel { position: absolute; width: 100%; height: 100%; top: 0; left: 0; display: none; background-color: #010204; overflow: hidden; }
+        .star-vector-line { position: absolute; background: linear-gradient(90deg, transparent, var(--neon-blue), #ffffff); height: 2px; border-radius: 50%; opacity: 0; }
+        .terminator-flash-screen { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: #ffffff; opacity: 0; display: none; z-index: 10000; }
+        .terminator-logo-container { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: #04050a; display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 10001; }
+        .vector-logo-wrap { width: 100%; max-width: 550px; display: none; opacity: 0; transform: scale(1.15); transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); }
+        .skip-intro-btn { position: absolute; bottom: 2rem; right: 2rem; background: transparent; border: 1px solid #222; color: #444; padding: 0.5rem 1rem; font-size: 0.75rem; cursor: pointer; z-index: 11000; }
 
-        .pneumatic-container {
-            width: 100%;
-            max-width: 500px;
-            height: 60px;
-            border: 2px solid var(--border-color);
-            background: linear-gradient(180deg, rgba(26,35,54,0.2) 0%, rgba(5,8,15,0.4) 100%);
-            border-radius: 30px;
-            display: none;
-            align-items: center;
-            padding: 0 10px;
-        }
-        .capsule-cartridge {
-            width: 140px;
-            height: 40px;
-            background: rgba(6, 182, 212, 0.2);
-            border: 1px solid var(--neon-cyan);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            color: var(--neon-cyan);
-            font-weight: bold;
-        }
-
-        .hyperspace-tunnel {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            display: none;
-            background-color: #010204;
-            overflow: hidden;
-        }
-        .star-vector-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), #ffffff);
-            height: 2px;
-            border-radius: 50%;
-            opacity: 0;
-        }
-
-        .terminator-flash-screen {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: #ffffff;
+        /* --- STAGE 2: MULTI-MODULE WORKSPACE CORE --- */
+        #core-workspace {
             opacity: 0;
             display: none;
-            z-index: 10000;
-        }
-        .terminator-logo-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: #04050a;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10001;
-        }
-        .vector-logo-wrap {
-            width: 100%;
-            max-width: 550px;
-            display: none;
-            opacity: 0;
-            transform: scale(1.15);
-            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-        }
-
-        /* --- STAGE 2: MONOSPACE TYPEWRITER PROPOSAL DASHBOARD --- */
-        #core-dashboard {
-            opacity: 0;
-            display: none;
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 0 auto;
             padding: 2rem 1rem;
             transition: opacity 1s ease-out;
         }
-        header { background: rgba(9, 14, 26, 0.9); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; margin-bottom: 2rem; }
-        .title-main { font-size: 1.8rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
-        .subtitle-main { font-size: 0.85rem; color: var(--neon-cyan); text-transform: uppercase; margin-top: 0.4rem; }
-        
-        section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; margin-bottom: 2rem; }
-        h2 { font-size: 1.15rem; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 1rem; display: flex; align-items: center; }
-        h2::before { content: '> '; color: var(--neon-cyan); }
-        p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+        header { background: rgba(8, 13, 24, 0.95); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; margin-bottom: 1.5rem; }
+        .title-main { font-size: 1.9rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
+        .subtitle-main { font-size: 0.85rem; color: var(--neon-cyan); text-transform: uppercase; margin-top: 0.4rem; letter-spacing: 1px; }
 
-        .fleet-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+        /* Tactical Command Tabs System Layout */
+        .terminal-tab-bar { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        .tab-trigger { background: #05080f; border: 1px solid var(--border-color); color: var(--text-muted); padding: 0.8rem 1.5rem; font-family: monospace; font-size: 0.85rem; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: all 0.2s; border-radius: 2px; }
+        .tab-trigger:hover { color: #ffffff; border-color: var(--neon-cyan); }
+        .tab-trigger.active-module { background: rgba(6, 182, 212, 0.08); border-color: var(--neon-cyan); color: var(--neon-cyan); text-shadow: 0 0 6px rgba(6,182,212,0.3); }
+
+        .workspace-panel { display: none; animation: panel-fade 0.4s ease-out; }
+        .workspace-panel.active-panel { display: block; }
+        @keyframes panel-fade { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.2rem; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 1.2rem; display: flex; align-items: center; }
+        h2::before { content: '> '; color: var(--neon-cyan); }
+        p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem; }
+
+        /* Real Estate Fleet Command Layouts */
+        .fleet-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
         .fleet-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; position: relative; }
         .fleet-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; }
         .fleet-speed::before { background: var(--neon-amber); }
         .fleet-prestige::before { background: var(--neon-cyan); }
-        
         .fleet-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-        .fleet-title { font-size: 1.25rem; font-weight: 800; color: #ffffff; }
+        .fleet-title { font-size: 1.3rem; font-weight: 800; color: #ffffff; }
         .fleet-counter { font-size: 0.75rem; color: var(--neon-cyan); background: rgba(6, 182, 212, 0.08); padding: 0.3rem 0.6rem; border: 1px solid rgba(6, 182, 212, 0.15); }
-        
-        .armada-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.6rem; }
-        .armada-node { background-color: var(--inner-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
-        .node-brand { font-size: 0.8rem; font-weight: 700; color: #ffffff; }
-        .node-tag { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
+        .armada-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.6rem; }
+        .armada-node { background-color: var(--inner-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
+        .node-brand { font-size: 0.85rem; font-weight: 700; color: #ffffff; }
+        .node-tag { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
         .node-indicator { width: 5px; height: 5px; background-color: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 6px var(--neon-cyan); }
         .fleet-speed .node-indicator { background-color: var(--neon-amber); box-shadow: 0 0 6px var(--neon-amber); }
 
-        .intake-section { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; }
+        /* Proposal Strategic Matrix Tables */
+        .proposal-matrix-table { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1.5rem; }
+        .proposal-matrix-table th { background: rgba(18, 22, 34, 0.6); text-align: left; padding: 1rem; font-size: 0.8rem; text-transform: uppercase; color: var(--neon-cyan); border: 1px solid var(--border-color); }
+        .proposal-matrix-table td { padding: 1.1rem 1rem; font-size: 0.9rem; line-height: 1.5; border: 1px solid var(--border-color); vertical-align: top; }
+        .row-pillar { font-weight: bold; color: #ffffff; background: rgba(5,8,15,0.3); }
+        .row-broken { color: #f87171; background: rgba(248,113,113,0.02); }
+        .row-nexus { color: #4ade80; background: rgba(74,222,128,0.02); }
+
+        /* Intake Modules */
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
         .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
-        label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
-        input, textarea { background: #04060b; border: 1px solid var(--border-color); border-radius: 2px; padding: 0.75rem; color: #ffffff; font-family: monospace; font-size: 0.9rem; }
-        button.submit-btn { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 1.1rem; font-family: monospace; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; }
-        button.submit-btn:hover { background: var(--neon-blue); color: #ffffff; }
+        label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; letter-spacing: 0.05em; }
+        input, textarea { background: #04060c; border: 1px solid var(--border-color); border-radius: 2px; padding: 0.85rem; color: #ffffff; font-family: monospace; font-size: 0.9rem; }
+        input:focus, textarea:focus { outline: none; border-color: var(--neon-cyan); }
+        button.submit-btn { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 1.2rem; font-family: monospace; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; border-radius: 2px; }
+        button.submit-btn:hover { background: var(--neon-blue); color: #ffffff; box-shadow: 0 0 15px rgba(59,130,246,0.3); }
         
-        .skip-intro-btn { position: absolute; bottom: 2rem; right: 2rem; background: transparent; border: 1px solid #222; color: #444; padding: 0.5rem 1rem; font-size: 0.75rem; cursor: pointer; z-index: 11000; }
+        footer { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 4rem; padding-bottom: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
     </style>
 </head>
 <body>
 
-    <!-- STAGE 1: INTRO TIMELINE OBJECTS -->
+    <!-- ========================================================
+       MODULE 1: CINEMATIC TRAILER INTRO MATRIX VIEWFINDER LAYER
+       ======================================================== -->
     <div id="cinematic-viewport">
-        <div id="montage-box" class="typing-montage-frame">
-            <div class="montage-clip-bg">QWERTYUIOP ASDFGHJKL ZXCVBNM</div>
-            <div id="carriage-line" class="live-carriage-line"></div>
-        </div>
-
-        <div id="tube-conduit" class="pneumatic-container">
-            <div id="capsule-node" class="capsule-cartridge">TELEGRAM_PIPE_INJECT</div>
-        </div>
-
-        <div id="warp-tunnel" class="hyperspace-tunnel"></div>
-        <div id="whiteout" class="terminator-flash-screen"></div>
-
-        <div id="terminator-box" class="terminator-logo-container">
-            <div id="vector-logo-1" class="vector-logo-wrap">
-                <svg viewBox="0 0 800 200" width="100%">
-                    <defs>
-                        <linearGradient id="steel" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#94a3b8"/>
-                            <stop offset="50%" stop-color="#cbd5e1"/>
-                            <stop offset="100%" stop-color="#475569"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M50,130 L180,40 L160,110 L320,110 L50,150 Z" fill="none" stroke="url(#steel)" stroke-width="4"/>
-                    <circle cx="180" cy="40" r="6" fill="#06b6d4"/>
