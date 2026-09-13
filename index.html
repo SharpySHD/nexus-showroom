@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE EXTRACTOR NEXUS • INITIALIZATION</title>
+    <title>THE EXTRACTOR NEXUS • PRESENTATION</title>
     <style>
         :root {
             --bg-color: #04060b;
@@ -17,7 +17,9 @@
             --neon-amber: #f59e0b;
             --border-color: #1a2336;
         }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body, html {
             background-color: var(--bg-color);
             color: var(--text-main);
@@ -27,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* --- STAGE 1: CINEMATIC VIEWFINDER --- */
+        /* ===== INTRO SEQUENCE ===== */
         #cinematic-viewport {
             position: fixed;
             top: 0;
@@ -56,6 +58,7 @@
             overflow: hidden;
             position: relative;
         }
+
         .montage-clip-bg {
             font-size: 2.2rem;
             font-weight: 900;
@@ -66,6 +69,7 @@
             text-align: center;
             user-select: none;
         }
+
         .live-carriage-line {
             font-size: 1.1rem;
             color: #00ffcc;
@@ -77,153 +81,494 @@
             overflow: hidden;
         }
 
-        .pneumatic-container {
-            width: 100%;
-            max-width: 500px;
-            height: 60px;
-            border: 2px solid var(--border-color);
-            background: linear-gradient(180deg, rgba(26,35,54,0.2) 0%, rgba(5,8,15,0.4) 100%);
-            border-radius: 30px;
-            display: none;
-            align-items: center;
-            padding: 0 10px;
-        }
-        .capsule-cartridge {
-            width: 140px;
-            height: 40px;
-            background: rgba(6, 182, 212, 0.2);
-            border: 1px solid var(--neon-cyan);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .skip-intro-btn {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: transparent;
+            border: 1px solid #222;
+            color: #666;
+            padding: 0.5rem 1rem;
             font-size: 0.75rem;
+            cursor: pointer;
+            z-index: 11000;
+            transition: all 0.3s;
+        }
+
+        .skip-intro-btn:hover {
+            border-color: var(--neon-cyan);
             color: var(--neon-cyan);
-            font-weight: bold;
         }
 
-        .hyperspace-tunnel {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            display: none;
-            background-color: #010204;
-            overflow: hidden;
-        }
-        .star-vector-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), #ffffff);
-            height: 2px;
-            border-radius: 50%;
-            opacity: 0;
-        }
-
-        .terminator-flash-screen {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: #ffffff;
-            opacity: 0;
-            display: none;
-            z-index: 10000;
-        }
-        .terminator-logo-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: #04050a;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10001;
-        }
-        .vector-logo-wrap {
-            width: 100%;
-            max-width: 550px;
-            display: none;
-            opacity: 0;
-            transform: scale(1.15);
-            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-        }
-
-        /* --- STAGE 2: MONOSPACE TYPEWRITER PROPOSAL DASHBOARD --- */
+        /* ===== MAIN PRESENTATION ===== */
         #core-dashboard {
-            opacity: 0;
-            display: none;
-            max-width: 1100px;
+            opacity: 1;
+            display: block;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 1rem;
-            transition: opacity 1s ease-out;
         }
-        header { background: rgba(9, 14, 26, 0.9); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; margin-bottom: 2rem; }
-        .title-main { font-size: 1.8rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
-        .subtitle-main { font-size: 0.85rem; color: var(--neon-cyan); text-transform: uppercase; margin-top: 0.4rem; }
-        
-        section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; margin-bottom: 2rem; }
-        h2 { font-size: 1.15rem; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 1rem; display: flex; align-items: center; }
-        h2::before { content: '> '; color: var(--neon-cyan); }
-        p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
 
-        .fleet-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
-        .fleet-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; position: relative; }
-        .fleet-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; }
-        .fleet-speed::before { background: var(--neon-amber); }
-        .fleet-prestige::before { background: var(--neon-cyan); }
-        
-        .fleet-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-        .fleet-title { font-size: 1.25rem; font-weight: 800; color: #ffffff; }
-        .fleet-counter { font-size: 0.75rem; color: var(--neon-cyan); background: rgba(6, 182, 212, 0.08); padding: 0.3rem 0.6rem; border: 1px solid rgba(6, 182, 212, 0.15); }
-        
-        .armada-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.6rem; }
-        .armada-node { background-color: var(--inner-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
-        .node-brand { font-size: 0.8rem; font-weight: 700; color: #ffffff; }
-        .node-tag { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
-        .node-indicator { width: 5px; height: 5px; background-color: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 6px var(--neon-cyan); }
-        .fleet-speed .node-indicator { background-color: var(--neon-amber); box-shadow: 0 0 6px var(--neon-amber); }
+        header {
+            background: rgba(9, 14, 26, 0.95);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
 
-        .intake-section { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-        .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
-        label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
-        input, textarea { background: #04060b; border: 1px solid var(--border-color); border-radius: 2px; padding: 0.75rem; color: #ffffff; font-family: monospace; font-size: 0.9rem; }
-        button.submit-btn { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 1.1rem; font-family: monospace; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; }
-        button.submit-btn:hover { background: var(--neon-blue); color: #ffffff; }
-        
-        .skip-intro-btn { position: absolute; bottom: 2rem; right: 2rem; background: transparent; border: 1px solid #222; color: #444; padding: 0.5rem 1rem; font-size: 0.75rem; cursor: pointer; z-index: 11000; }
+        .hub-badge {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .title-main {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle-main {
+            font-size: 0.9rem;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== VIDEO PLAYER ===== */
+        .video-container {
+            background-color: var(--card-bg);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .video-title::before {
+            content: '▶ ';
+            color: var(--neon-cyan);
+            margin-right: 0.5rem;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            background: #000;
+            border-radius: 4px;
+            display: block;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.05em;
+        }
+
+        h2::before {
+            content: '⚡ ';
+            color: var(--neon-cyan);
+            margin-right: 0.5rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== GRID SYSTEMS ===== */
+        .showroom-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .syndicate-node {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.75rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .syndicate-node:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+
+        .syndicate-node::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .node-prestige::before {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+        }
+
+        .node-ipay::before {
+            background: linear-gradient(90deg, var(--neon-blue), #a855f7);
+        }
+
+        .node-tab::before {
+            background: linear-gradient(90deg, var(--neon-amber), #ef4444);
+        }
+
+        .node-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .node-name {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.02em;
+        }
+
+        .node-count {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            background: rgba(6, 182, 212, 0.15);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            text-transform: uppercase;
+        }
+
+        .node-pitch {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .network-arms-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .arm-button {
+            background-color: var(--inner-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .arm-button:hover {
+            border-color: var(--neon-cyan);
+            background-color: rgba(6, 182, 212, 0.1);
+        }
+
+        .arm-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.03em;
+        }
+
+        .arm-status {
+            font-family: monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+            text-transform: uppercase;
+        }
+
+        .arm-button:hover .arm-status {
+            color: var(--neon-cyan);
+        }
+
+        .launch-btn {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 0.9rem;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .launch-btn:hover {
+            background: var(--neon-blue);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(11, 17, 32, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--neon-amber);
+        }
+
+        @media (max-width: 768px) {
+            .title-main { font-size: 1.8rem; }
+            .network-arms-container { grid-template-columns: 1fr; }
+            .showroom-matrix { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- STAGE 1: INTRO SEQUENCE CONTROLLERS -->
+    <!-- INTRO SEQUENCE -->
     <div id="cinematic-viewport">
         <div id="montage-box" class="typing-montage-frame">
-            <div class="montage-clip-bg">QWERTYUIOP ASDFGHJKL ZXCVBNM</div>
+            <div class="montage-clip-bg">INITIALIZING NEXUS CORE...</div>
             <div id="carriage-line" class="live-carriage-line"></div>
         </div>
+        <button class="skip-intro-btn" onclick="skipIntro()">SKIP INTRO</button>
+    </div>
 
-        <div id="tube-conduit" class="pneumatic-container">
-            <div id="capsule-node" class="capsule-cartridge">TELEGRAM_PIPE_INJECT</div>
+    <!-- MAIN PRESENTATION -->
+    <div id="core-dashboard">
+        <header>
+            <div class="hub-badge">THE EXTRACTOR NEXUS</div>
+            <div class="title-main">UNIFIED PRESENTATION HUB</div>
+            <div class="subtitle-main">Consolidated Digital Platform Interface</div>
+        </header>
+
+        <!-- VIDEO PLAYER SECTION -->
+        <div class="video-container">
+            <div class="video-title">Featured Presentation</div>
+            <video controls>
+                <source src="your-video.mp4" type="video/mp4">
+                <source src="your-video.webm" type="video/webm">
+                Your browser doesn't support HTML5 video playback.
+            </video>
         </div>
 
-        <div id="warp-tunnel" class="hyperspace-tunnel"></div>
-        <div id="whiteout" class="terminator-flash-screen"></div>
+        <!-- CORE SECTIONS -->
+        <section>
+            <h2>Overview</h2>
+            <p>This presentation combines cutting-edge design with interactive elements. The interface utilizes a dark theme with neon accents for optimal viewing experience.</p>
+        </section>
 
-        <div id="terminator-box" class="terminator-logo-container">
-            <!-- EMBEDDED SHARPHUB DYNAMICS GRADIENT CORE -->
-            <div id="vector-logo-1" class="vector-logo-wrap">
-                <svg viewBox="0 0 800 200" width="100%">
-                    <defs>
-                        <linearGradient id="steel" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#94a3b8"/>
-                            <stop offset="50%" stop-color="#cbd5e1"/>
-                            <stop offset="100%" stop-color="#475569"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M50,130 L180,40 L160,110 L320,110 L50,150 Z" fill="none" stroke="url(#steel)" stroke-width="4"/>
+        <section>
+            <h2>Matrix Interface</h2>
+            <div class="showroom-matrix">
+                <!-- NODE 1 -->
+                <div class="syndicate-node node-prestige">
+                    <div class="node-header">
+                        <div class="node-name">PRESTIGE</div>
+                        <div class="node-count">6 ACTIVE</div>
+                    </div>
+                    <div class="node-pitch">Premium tier ecosystem with comprehensive integration capabilities and advanced features.</div>
+                    <div class="network-arms-container">
+                        <div class="arm-button">
+                            <div class="arm-name">CORE</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">PLUS</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">PRO</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">ELITE</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">VIP</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">ULTRA</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                    </div>
+                    <div class="launch-btn">Initialize Prestige</div>
+                </div>
+
+                <!-- NODE 2 -->
+                <div class="syndicate-node node-ipay">
+                    <div class="node-header">
+                        <div class="node-name">ADVANCED</div>
+                        <div class="node-count">6 ACTIVE</div>
+                    </div>
+                    <div class="node-pitch">Enhanced tier with specialized tools and extended functionality for power users.</div>
+                    <div class="network-arms-container">
+                        <div class="arm-button">
+                            <div class="arm-name">ALPHA</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">BETA</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">GAMMA</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">DELTA</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">EPSILON</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">ZETA</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                    </div>
+                    <div class="launch-btn">Initialize Advanced</div>
+                </div>
+
+                <!-- NODE 3 -->
+                <div class="syndicate-node node-tab">
+                    <div class="node-header">
+                        <div class="node-name">STANDARD</div>
+                        <div class="node-count">4 ACTIVE</div>
+                    </div>
+                    <div class="node-pitch">Essential tier offering core functionality with streamlined access and fundamental tools.</div>
+                    <div class="network-arms-container">
+                        <div class="arm-button">
+                            <div class="arm-name">BASIC</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">STANDARD</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">ENHANCED</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                        <div class="arm-button">
+                            <div class="arm-name">PLUS</div>
+                            <div class="arm-status">Active</div>
+                        </div>
+                    </div>
+                    <div class="launch-btn">Initialize Standard</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 THE EXTRACTOR NEXUS | PRESENTATION INTERFACE | STATUS: OPERATIONAL
+        </footer>
+    </div>
+
+    <script>
+        // Typing animation for intro
+        const typingText = "INITIALIZING CORE SYSTEMS... LOADING PRESENTATION INTERFACE...";
+        let index = 0;
+
+        function typeText() {
+            const carriageLine = document.getElementById("carriage-line");
+            if (index < typingText.length) {
+                carriageLine.textContent += typingText[index];
+                index++;
+                setTimeout(typeText, 50);
+            } else {
+                setTimeout(showPresentation, 2000);
+            }
+        }
+
+        function skipIntro() {
+            showPresentation();
+        }
+
+        function showPresentation() {
+            const viewport = document.getElementById("cinematic-viewport");
+            const dashboard = document.getElementById("core-dashboard");
+            
+            viewport.style.transition = "opacity 1s ease-out";
+            viewport.style.opacity = "0";
+            viewport.style.pointerEvents = "none";
+            
+            dashboard.style.transition = "opacity 1s ease-in";
+            dashboard.style.opacity = "1";
+        }
+
+        // Start typing animation on page load
+        window.addEventListener("load", () => {
+            setTimeout(typeText, 500);
+        });
+
+        // Add click handlers for buttons
+        document.querySelectorAll(".launch-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                this.style.transform = "scale(0.98)";
+                setTimeout(() => {
+                    this.style.transform = "scale(1)";
+                }, 200);
+            });
+        });
+    </script>
+
+</body>
+</html>
