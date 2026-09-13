@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THE EXTRACTOR NEXUS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE EXTRACTOR NEXUS • INITIALIZATION</title>
     <style>
         :root {
             --bg-color: #04060b;
@@ -24,421 +24,206 @@
             font-family: "Courier New", Courier, monospace;
             width: 100%;
             height: 100%;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
-        /* STAGE 1: VIDEO PLAYBACK */
-        #video-stage {
+        /* ========================================================
+           STAGE 1: HARDWARE LAYER (THE CINEMATIC SEQUENCE CLOSURES)
+           ======================================================== */
+        #cinematic-viewport {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000;
+            background-color: #010205;
             z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease-out;
-        }
-
-        #video-stage.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        #intro-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-skip {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            background: rgba(0,0,0,0.7);
-            border: 1px solid var(--neon-cyan);
-            color: var(--neon-cyan);
-            padding: 0.6rem 1.2rem;
-            font-size: 0.75rem;
-            cursor: pointer;
-            z-index: 11000;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: monospace;
-            border-radius: 4px;
-        }
-
-        .video-skip:hover {
-            background: var(--neon-cyan);
-            color: #000;
-            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
-        }
-
-        /* STAGE 2: LOGO ANIMATION */
-        #logo-stage {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #04050a;
-            z-index: 9998;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: opacity 1s ease-out;
-            opacity: 0;
-            pointer-events: none;
+            padding: 2rem;
+            transition: opacity 0.8s ease-in-out;
         }
 
-        #logo-stage.show {
-            opacity: 1;
-        }
-
-        #logo-stage.hide {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .logo-container {
+        .typing-montage-frame {
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
+            height: 140px;
+            border: 1px solid #111;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: logoEnter 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+            background: #020306;
+            overflow: hidden;
+            position: relative;
+        }
+        .montage-clip-bg {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.02);
+            letter-spacing: -2px;
+            position: absolute;
+            width: 150%;
+            text-align: center;
+            user-select: none;
+        }
+        .live-carriage-line {
+            font-size: 1.1rem;
+            color: #00ffcc;
+            text-shadow: 0 0 8px rgba(0,255,204,0.4);
+            width: 90%;
+            text-align: left;
+            border-right: 2px solid #00ffcc;
+            white-space: pre-wrap;
+            overflow: hidden;
         }
 
-        @keyframes logoEnter {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .logo-svg {
+        .pneumatic-container {
             width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5));
+            max-width: 500px;
+            height: 60px;
+            border: 2px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(26,35,54,0.2) 0%, rgba(5,8,15,0.4) 100%);
+            border-radius: 30px;
+            display: none;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .capsule-cartridge {
+            width: 140px;
+            height: 40px;
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            font-weight: bold;
         }
 
-        /* STAGE 3: MAIN DASHBOARD */
+        .hyperspace-tunnel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+            background-color: #010204;
+            overflow: hidden;
+        }
+        .star-vector-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), #ffffff);
+            height: 2px;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .terminator-flash-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #ffffff;
+            opacity: 0;
+            display: none;
+            z-index: 10000;
+        }
+        .terminator-logo-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #04050a;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+        }
+        .vector-logo-wrap {
+            width: 100%;
+            max-width: 550px;
+            display: none;
+            opacity: 0;
+            transform: scale(1.15);
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        /* ========================================================
+           STAGE 2: FIXED MONOSPACE INTERACTIVE HUB PAGE 
+           ======================================================== */
         #core-dashboard {
             opacity: 0;
             display: none;
             max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 1rem;
-            transition: opacity 1s ease-out;
+            transition: opacity 0.8s ease-out;
         }
-
-        #core-dashboard.visible {
-            opacity: 1;
-            display: block;
-        }
-
-        header { 
-            background: rgba(9, 14, 26, 0.9); 
-            border: 1px solid var(--border-color); 
-            padding: 2rem; 
-            border-radius: 4px; 
-            margin-bottom: 2rem; 
-        }
-        .title-main { 
-            font-size: 1.8rem; 
-            font-weight: 900; 
-            color: #ffffff; 
-            letter-spacing: 0.05em; 
-        }
-        .subtitle-main { 
-            font-size: 0.85rem; 
-            color: var(--neon-cyan); 
-            text-transform: uppercase; 
-            margin-top: 0.4rem; 
-        }
+        header { background: rgba(9, 14, 26, 0.9); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; margin-bottom: 2rem; }
+        .title-main { font-size: 1.8rem; font-weight: 900; color: #ffffff; letter-spacing: 0.05em; }
+        .subtitle-main { font-size: 0.85rem; color: var(--neon-cyan); text-transform: uppercase; margin-top: 0.4rem; }
         
-        section { 
-            background-color: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            border-radius: 4px; 
-            padding: 2rem; 
-            margin-bottom: 2rem; 
-        }
-        h2 { 
-            font-size: 1.15rem; 
-            text-transform: uppercase; 
-            color: var(--neon-cyan); 
-            margin-bottom: 1rem; 
-            display: flex; 
-            align-items: center; 
-        }
-        h2::before { 
-            content: '> '; 
-            color: var(--neon-cyan); 
-        }
-        p { 
-            color: var(--text-muted); 
-            font-size: 0.9rem; 
-            line-height: 1.6; 
-            margin-bottom: 1rem; 
-        }
+        section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.15rem; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 1rem; display: flex; align-items: center; }
+        h2::before { content: '> '; color: var(--neon-cyan); }
+        p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
 
-        .fleet-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 2rem; 
-            margin-bottom: 3rem; 
-        }
-        .fleet-card { 
-            background-color: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            border-radius: 4px; 
-            padding: 2rem; 
-            position: relative; 
-        }
-        .fleet-card::before { 
-            content: ''; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            bottom: 0; 
-            width: 4px; 
-        }
-        .fleet-speed::before { 
-            background: var(--neon-amber); 
-        }
-        .fleet-prestige::before { 
-            background: var(--neon-cyan); 
-        }
+        .fleet-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+        .fleet-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 2rem; position: relative; }
+        .fleet-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; }
+        .fleet-speed::before { background: var(--neon-amber); }
+        .fleet-prestige::before { background: var(--neon-cyan); }
         
-        .fleet-header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid var(--border-color); 
-            padding-bottom: 1rem; 
-            margin-bottom: 1.5rem; 
-        }
-        .fleet-title { 
-            font-size: 1.25rem; 
-            font-weight: 800; 
-            color: #ffffff; 
-        }
-        .fleet-counter { 
-            font-size: 0.75rem; 
-            color: var(--neon-cyan); 
-            background: rgba(6, 182, 212, 0.08); 
-            padding: 0.3rem 0.6rem; 
-            border: 1px solid rgba(6, 182, 212, 0.15); 
-        }
+        .fleet-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .fleet-title { font-size: 1.25rem; font-weight: 800; color: #ffffff; }
+        .fleet-counter { font-size: 0.75rem; color: var(--neon-cyan); background: rgba(6, 182, 212, 0.08); padding: 0.3rem 0.6rem; border: 1px solid rgba(6, 182, 212, 0.15); }
         
-        .armada-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 0.6rem; 
-        }
-        .armada-node { 
-            background-color: var(--inner-bg); 
-            border: 1px solid var(--border-color); 
-            border-radius: 4px; 
-            padding: 0.8rem; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        .node-brand { 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            color: #ffffff; 
-        }
-        .node-tag { 
-            font-size: 0.6rem; 
-            color: var(--text-muted); 
-            text-transform: uppercase; 
-        }
-        .node-indicator { 
-            width: 5px; 
-            height: 5px; 
-            background-color: var(--neon-cyan); 
-            border-radius: 50%; 
-            box-shadow: 0 0 6px var(--neon-cyan); 
-        }
-        .fleet-speed .node-indicator { 
-            background-color: var(--neon-amber); 
-            box-shadow: 0 0 6px var(--neon-amber); 
-        }
+        .armada-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.6rem; }
+        .armada-node { background-color: var(--inner-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
+        .node-brand { font-size: 0.8rem; font-weight: 700; color: #ffffff; }
+        .node-tag { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
+        .node-indicator { width: 5px; height: 5px; background-color: var(--neon-cyan); border-radius: 50%; box-shadow: 0 0 6px var(--neon-cyan); }
+        .fleet-speed .node-indicator { background-color: var(--neon-amber); box-shadow: 0 0 6px var(--neon-amber); }
 
-        .intake-section { 
-            background-color: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            padding: 2rem; 
-            border-radius: 4px; 
-        }
-        .form-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 1rem; 
-            margin-bottom: 1rem; 
-        }
-        .form-group { 
-            display: flex; 
-            flex-direction: column; 
-            margin-bottom: 1rem; 
-        }
-        label { 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            color: var(--text-muted); 
-            margin-bottom: 0.3rem; 
-        }
-        input, textarea { 
-            background: #04060b; 
-            border: 1px solid var(--border-color); 
-            border-radius: 2px; 
-            padding: 0.75rem; 
-            color: #ffffff; 
-            font-family: monospace; 
-            font-size: 0.9rem; 
-        }
-        button.submit-btn { 
-            width: 100%; 
-            background: transparent; 
-            border: 1px solid var(--neon-blue); 
-            color: var(--neon-blue); 
-            padding: 1.1rem; 
-            font-family: monospace; 
-            font-size: 0.9rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            cursor: pointer; 
-            margin-top: 0.5rem; 
-            transition: all 0.2s;
-        }
-
-        button.submit-btn:hover {
-            background: var(--neon-blue);
-            color: #ffffff;
-        }
+        .intake-section { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 4px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+        label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
+        input, textarea { background: #04060b; border: 1px solid var(--border-color); border-radius: 2px; padding: 0.75rem; color: #ffffff; font-family: monospace; font-size: 0.9rem; }
+        button.submit-btn { width: 100%; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 1.1rem; font-family: monospace; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-top: 0.5rem; transition: all 0.2s; }
+        button.submit-btn:hover { background: var(--neon-blue); color: #ffffff; }
         
-        .skip-intro-btn { 
-            position: absolute; 
-            bottom: 2rem; 
-            right: 2rem; 
-            background: transparent; 
-            border: 1px solid #222; 
-            color: #444; 
-            padding: 0.5rem 1rem; 
-            font-size: 0.75rem; 
-            cursor: pointer; 
-            z-index: 11000; 
-            transition: all 0.3s;
-        }
-
-        .skip-intro-btn:hover {
-            border-color: var(--neon-cyan);
-            color: var(--neon-cyan);
-        }
+        .skip-intro-btn { position: absolute; bottom: 2rem; right: 2rem; background: transparent; border: 1px solid #222; color: #444; padding: 0.5rem 1rem; font-size: 0.75rem; cursor: pointer; z-index: 11000; }
     </style>
 </head>
 <body>
 
-    <!-- STAGE 1: VIDEO INTRO -->
-    <div id="video-stage">
-        <video id="intro-video" autoplay onended="transitionToLogo()">
-            <source src="typewriter.mp4" type="video/mp4">
-            Your browser doesn't support video.
-        </video>
-        <button class="video-skip" onclick="skipToLogo()">SKIP VIDEO</button>
-    </div>
-
-    <!-- STAGE 2: LOGO ANIMATION -->
-    <div id="logo-stage">
-        <div class="logo-container">
-            <svg class="logo-svg" viewBox="0 0 800 200" width="100%">
-                <defs>
-                    <linearGradient id="stGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#94a3b8"/>
-                        <stop offset="50%" stop-color="#cbd5e1"/>
-                        <stop offset="100%" stop-color="#475569"/>
-                    </linearGradient>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                        <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
-                </defs>
-                <path d="M50,130 L180,40 L160,110 L320,110 L50,150 Z" fill="none" stroke="url(#stGrad)" stroke-width="4" filter="url(#glow)"/>
-                <text x="340" y="105" font-family="Courier New, monospace" font-weight="900" font-size="46" fill="url(#stGrad)" filter="url(#glow)">SHARPHUB</text>
-            </svg>
+    <!-- STAGE 1: CINEMATIC HARDWARE MULTIMEDIA CONTAINER -->
+    <div id="cinematic-viewport">
+        <div id="montage-box" class="typing-montage-frame">
+            <div class="montage-clip-bg">QWERTYUIOP ASDFGHJKL ZXCVBNM</div>
+            <div id="carriage-line" class="live-carriage-line"></div>
         </div>
-    </div>
 
-    <!-- STAGE 3: MAIN DASHBOARD -->
-    <div id="core-dashboard">
-        <header>
-            <div class="title-main">THE EXTRACTOR NEXUS</div>
-            <div class="subtitle-main">Consolidated Digital Interface</div>
-        </header>
+        <div id="tube-conduit" class="pneumatic-container">
+            <div id="capsule-node" class="capsule-cartridge">TELEGRAM_PIPE_INJECT</div>
+        </div>
 
-        <section>
-            <h2>Welcome to SharpHub</h2>
-            <p>This presentation platform combines cinematic video introduction with an interactive dashboard. The system delivers a professional multimedia experience with three-stage initialization sequence.</p>
-        </section>
+        <div id="warp-tunnel" class="hyperspace-tunnel"></div>
+        <div id="whiteout" class="terminator-flash-screen"></div>
 
-        <section>
-            <h2>System Status</h2>
-            <p>All systems operational. Video playback complete. Logo animation successful. Dashboard interface initialized and ready for deployment.</p>
-        </section>
-    </div>
-
-    <script>
-        function transitionToLogo() {
-            const videoStage = document.getElementById('video-stage');
-            const logoStage = document.getElementById('logo-stage');
-            
-            videoStage.classList.add('hidden');
-            logoStage.classList.add('show');
-            
-            // After logo animation, transition to dashboard
-            setTimeout(transitionToDashboard, 2500);
-        }
-
-        function skipToLogo() {
-            const video = document.getElementById('intro-video');
-            video.pause();
-            transitionToLogo();
-        }
-
-        function transitionToDashboard() {
-            const logoStage = document.getElementById('logo-stage');
-            const dashboard = document.getElementById('core-dashboard');
-            
-            logoStage.classList.add('hide');
-            setTimeout(() => {
-                dashboard.classList.add('visible');
-            }, 100);
-        }
-
-        // Button animations
-        document.querySelectorAll('.submit-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
-            });
-        });
-    </script>
-
-</body>
-</html>
+        <div id="terminator-box" class="terminator-logo-container">
+            <!-- EMBEDDED SHARPHUB DYNAMICS VECTOR LOGO -->
+            <div id="vector-logo-1" class="vector-logo-wrap">
+                <svg viewBox="0 0 800 200" width="100%">
+                    <defs>
+                        <linearGradient id="steelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#94a3b8"/>
